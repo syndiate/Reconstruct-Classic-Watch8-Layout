@@ -212,7 +212,21 @@ function waitForElementLoad(selector, callback, checkFrequency, timeout)
 	
 }
 
-async function getComments(data = {})
+
+// TODO: comment reconstruct and futureproofing
+
+function cCreateComment(chOwner, cOwner, pic, name, nUrl, cUrl, cTime, cIsEdited, content, like, rExists, rCount, isHeart)
+{
+	
+	// -- TEMP BLOCK -- //
+	
+	// ---------------- //
+	
+	return 0;
+	
+}
+
+async function getComments()
 {
 	
 	videoId = (function()
@@ -224,26 +238,84 @@ async function getComments(data = {})
 	
 	// Request the current video page again and retrieve required data for loading comments.
 	
-	var response = await fetch(("https://www.youtube.com/watch?v=" + videoId + "&pbj=1"), 
-    {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credientials: 'same-origin',
-        headers: 
-        {
-            'X-YOUTUBE-CLIENT-NAME': '1',
-            'X-YOUTUBE-CLIENT-VERSION': '1.20200101.01.01'
-        },
-        redirect: 'follow',
-        referrerPolicy: 'strict-origin-when-cross-origin',
-        body: JSON.stringify(data)
-    });
+	let paramsData;
+	let commentData;
+	
+	async function gcGetCommentParams()
+	{
+		
+		var response = await fetch(("https://www.youtube.com/watch?v=" + videoId + "&pbj=1"), 
+		{
+			method: 'POST',
+			mode: 'cors',
+			cache: 'no-cache',
+			credientials: 'same-origin',
+			headers: 
+			{
+				'X-YOUTUBE-CLIENT-NAME': '1',
+				'X-YOUTUBE-CLIENT-VERSION': '2.20200101.01.01'
+			},
+			redirect: 'follow',
+			referrerPolicy: 'strict-origin-when-cross-origin',
+			body: JSON.stringify("{}")
+		});
+		
+		return response.json();
+	
+	}
+	
+	paramsData = await gcGetCommentParams();
+	
+	
+	// logging
+	console.log(paramsData);
+	// -------
+	
+	gcCommentParams = 
+		paramsData[3].response.contents.twoColumnWatchNextResults.results.results.contents[2].itemSectionRenderer;
+	gccpContinuation = 
+		encodeURIComponent(gcCommentParams.continuations[0].nextContinuationData.continuation);
+	gccpTracking = 
+		encodeURIComponent(gcCommentParams.continuations[0].nextContinuationData.clickTrackingParams);
+	gccpSession =
+		encodeURIComponent(paramsData[3].xsrf_token);
+	
+	 
+	if (typeof gccpContinuation !== 'undefined' && typeof gccpTracking !== 'undefined')
+	{
+		
+		commentData = await gcGetHitchhikerComments();
+		
+	}
+	
+	
+	async function gcGetHitchhikerComments(callback)
+	{
+		
+		var response = await fetch(("https://www.youtube.com/comment_service_ajax?action_get_comments=1&pbj=1&ctoken=" + gccpContinuation + "&continuation=" + gccpContinuation + "&type=next&itct=" + gccpTracking), 
+		{
+			"method": 'POST',
+			"mode": 'cors',
+			"cache": 'no-cache',
+			"credientials": 'same-origin',
+			headers: 
+			{
+				"content-type": "application/x-www-form-urlencoded",
+				'X-YOUTUBE-CLIENT-NAME': '1',
+				'X-YOUTUBE-CLIENT-VERSION': '1.20200101.01.01'
+			},
+			redirect: 'follow',
+			referrerPolicy: 'strict-origin-when-cross-origin',
+			body: "session_token=" + gccpSession
+		});
+		
+		return response.json();
     
-    return response.json();
+	}
+	
+	console.log(commentData);
 	
 }
-
 
 function mainloader()
 {
