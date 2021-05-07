@@ -266,11 +266,6 @@ async function getComments()
 	
 	paramsData = await gcGetCommentParams();
 	
-	
-	// logging
-	console.log(paramsData);
-	// -------
-	
 	gcCommentParams = 
 		paramsData[3].response.contents.twoColumnWatchNextResults.results.results.contents[2].itemSectionRenderer;
 	gccpContinuation = 
@@ -313,7 +308,7 @@ async function getComments()
     
 	}
 	
-	console.log(commentData);
+	return commentData;
 	
 }
 
