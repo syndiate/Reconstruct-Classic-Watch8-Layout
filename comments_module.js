@@ -107,7 +107,7 @@ function i18n(string)
 	
 }
 
-function getCommentTemplate(template)
+function getCommentTemplate(template, arg1, arg2, arg3, arg4, arg5, arg6)
 {
 	
 	switch(template)
@@ -132,6 +132,76 @@ function getCommentTemplate(template)
 		break;
 		
 		case "cMainHead":
+			return (
+`<div id="comment-section-renderer" class="comment-section-renderer vve-check" data-visibility-tracking="CAsQuy8iEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-child-tracking="">
+          <h2 class="comment-section-header-renderer" tabindex="0">
+<b>Comments</b> • 0<span class="alternate-content-link"></span>  </h2>
+
+          
+<div class="comment-simplebox-renderer yt-uix-servicelink vve-check" data-servicelink="itct=CA0QwXUiEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-visibility-tracking="CA0QwXUiEwiOxOGjvpnRAhUXqH4KHR1AD08omxw">
+  <span class="video-thumb comment-author-thumbnail yt-thumb yt-thumb-48">
+    <span class="yt-thumb-square">
+      <span class="yt-thumb-clip">
+        
+  <img alt="Default profile photo" role="img" tabindex="0" data-ytimg="1" src="//s.ytimg.com/yts/img/avatar_48-vfllY0UTT.png" onload=";__ytRIL(this)" width="48" height="48">
+
+        <span class="vertical-align"></span>
+      </span>
+    </span>
+  </span>
+<div class="comment-simplebox-renderer-collapsed comment-section-renderer-redirect" data-target="https://accounts.google.com/ServiceLogin?service=youtube&amp;uilel=3&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26next%3D%252Fchannel%252FUC-lHJZR3Gqxm24_Vd_AJ5Yw%26hl%3Den%26app%3DNone&amp;hl=en&amp;passive=true"><div class="comment-simplebox-renderer-collapsed-content">Add a public comment...</div><div class="comment-simplebox-arrow"><div class="arrow-inner"></div><div class="arrow-outer"></div></div></div></div>
+              <div class="yt-uix-menu comment-section-sort-menu">  <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default  yt-uix-menu-trigger" type="button" onclick=";return false;" aria-pressed="false" aria-label="Action menu." aria-haspopup="true" role="button"><span class="yt-uix-button-content">Top comments</span><span class="yt-uix-button-arrow yt-sprite"></span></button>
+<div class="yt-uix-menu-content yt-ui-menu-content yt-uix-menu-content-hidden" role="menu"><ul><li>  <button type="button" class="yt-ui-menu-item yt-uix-menu-close-on-select comment-section-sort-menu-item yt-uix-sessionlink" data-sessionlink-target="/comment_service_ajax?action_get_comments=1" data-menu_name="top-comments" data-sessionlink="itct=CAwQ7pgBIhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-token="Ih4SGFVDLWxISlpSM0dxeG0yNF9WZF9BSjVZdygBMAA%3D" data-url="/comment_service_ajax?action_get_comments=1">
+    <span class="yt-ui-menu-item-label">Top comments</span>
+  </button>
+</li><li>  <button type="button" class="yt-ui-menu-item yt-uix-menu-close-on-select comment-section-sort-menu-item yt-uix-sessionlink" data-sessionlink-target="/comment_service_ajax?action_get_comments=1" data-menu_name="newest-first" data-sessionlink="itct=CAwQ7pgBIhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-token="Ih4SGFVDLWxISlpSM0dxeG0yNF9WZF9BSjVZdygBMAE%3D" data-url="/comment_service_ajax?action_get_comments=1">
+    <span class="yt-ui-menu-item-label">Newest first</span>
+  </button>
+</li></ul></div></div>
+
+        <div class="yt-alert yt-alert-naked yt-alert-success hid zero-step-tooltip">  <div class="yt-alert-icon">
+    <span class="icon master-sprite yt-sprite"></span>
+  </div>
+<div class="yt-alert-content" role="alert"></div></div>
+        <div class="comment-section-renderer-items" id="comment-section-renderer-items">
+      <span title="Loading icon" class="yt-spinner-img comment-section-items-loading yt-sprite"></span>
+ ` + arg1  + `
+  </div>
+
+          
+
+
+
+
+    <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default load-more-button yt-uix-load-more comment-section-renderer-paginator yt-uix-sessionlink" type="button" onclick=";return false;" aria-label="Show more
+" data-uix-load-more-target-id="comment-section-renderer-items" data-uix-load-more-post-body="page_token=CqgCQ2cwUXhPcmlpTDZaMFFJZ0FDZ0JFcjBCQ0FBUXFPdTN0N2laMFFJcXJ3RzdqK1NLcTRQKzN3T2FudkR1OVlEYnBnUGVqdUNqaWVYV2E4ZWNuYTM3eXFlRkE1YVF2dHkycHB5d0EvUGVvK21IcHVSN2dZL254L1NONHhiOThZbjNvYWo1NkFMNC82bU4vSnl5Z2dMU21LdjZ2L3F0d2dQM3VJbmp6N0dJMEFLQnVKdmFvdVdHa0FHRnRkblBxZkxQM3dMeXU4dmo1cGpTNmdPV3FvdTZtK2o2aHdLcjBvV1VwOGJad2dPOHlkVGdqc1RMV0tHUTQreldwS3dwaUlLNDU3VEs2YmtDNW9PSnV0anVnTklCR0FFZ0ZDaWdzL2p3aTY3QWgyYz0iHBIYVUMtbEhKWlIzR3F4bTI0X1ZkX0FKNVl3KAEoFA%253D%253D" data-sessionlink="itct=CAsQuy8iEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-uix-load-more-href="/comment_service_ajax?action_get_comments=1" data-sessionlink-target="/comment_service_ajax?action_get_comments=1" data-uix-load-more-post="true" style="display: none;"><span class="yt-uix-button-content">  <span class="load-more-loading hid">
+      <span class="yt-spinner">
+      <span title="Loading icon" class="yt-spinner-img  yt-sprite"></span>
+
+Loading...
+  </span>
+
+  </span>
+  <span class="load-more-text">
+    Show more
+
+  </span>
+</span></button>
+
+
+        <div class="comment-simplebox" id="comment-simplebox"><div class="comment-simplebox-arrow"><div class="arrow-inner"></div><div class="arrow-outer"></div></div><div class="comment-simplebox-frame">
+<div class="comment-simplebox-prompt"></div><div class="comment-simplebox-text" role="textbox" aria-multiline="true" contenteditable="true"></div></div><div class="comment-simplebox-controls">
+<div class="comment-simplebox-error-message hid" data-placeholder="Comment failed to post.
+"></div><div class="comment-simplebox-buttons"><span class="comment-simplebox-character-counter"></span><button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default comment-simplebox-cancel" type="button" onclick=";return false;"><span class="yt-uix-button-content">Cancel
+</span></button><button class="yt-uix-button yt-uix-button-size-default yt-uix-button-primary yt-uix-button-empty comment-simplebox-submit yt-uix-sessionlink" type="button" onclick=";return false;" data-target="" data-params="" data-zero-step-params=""></button></div></div>  <span title="Loading icon" class="yt-spinner-img comment-simplebox-loading yt-sprite"></span>
+</div>
+      <div class="feedback-banner hid" aria-live="polite"></div>
+        <span title="Loading icon" class="yt-spinner-img comment-renderer-loading yt-sprite"></span>
+
+      <div class="hid" id="comment-renderer-abuse">
+        <div class="comment-renderer-abuse-content"></div>
+      </div>
+    </div>`);
 		break;
 		
 		case "cMainSort":
@@ -312,8 +382,32 @@ async function getComments()
 	
 }
 
+function loadComments(retry)
+{
+	
+	var commentsp;
+	var commentsg = getComments().then(response => commentsp = response);
+	
+	// Loop while waiting for comments to be gotten
+	
+	setInterval(function()
+	{
+		if (typeof commentsp.content_html !== 'undefined')
+		{
+		
+			var commentContainer = getCommentTemplate("cMainHead", commentsp.content_html);
+			
+			$("#watch-discussion .action-panel-loading").outerHTML = commentContainer;
+		
+		}	
+	}, 100)
+	
+}
+
 function mainloader()
 {
+	
+	injectCss();
 	
 	/* Function loads the new comments upon the initial page visit
 	// or upon a page change event. This is actually harder than
@@ -348,6 +442,8 @@ function mainloader()
 			
 			$("#action-panel-details").insertAdjacentHTML("afterend", getCommentTemplate("cMainLoading"));
 			
+			setTimeout(loadComments(0), 1000);
+			
 		}, 5, 15000);
 		
 	}
@@ -376,6 +472,1211 @@ function isWatch()
 {
 	
 	return (window.location.pathname == "/watch" ? true : false);
+	
+}
+
+function addStyle(styleString) 
+{
+	// Shamelessly stolen from the main w8r script
+	const style = document.createElement('style');
+	style.textContent = styleString;
+	document.head.append(style);
+}
+
+function injectCss()
+{
+	
+	addStyle(`#watch-discussion .yt-ui-menu-content:focus {
+    outline: none;
+}
+
+#watch-discussion .yt-ui-menu-content {
+    background: #fff;
+    border: 1px solid #d3d3d3;
+    outline: none;
+    overflow: visible;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+#watch-discussion .yt-ui-menu-item {
+    position: relative;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+    word-wrap: normal;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#watch-discussion .yt-ui-menu-item-label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#watch-discussion .yt-ui-menu-item:hover {
+    background: #eee;
+}
+
+#watch-discussion .yt-ui-menu-item:focus {
+    outline: none;
+    background: #eee;
+}
+
+#watch-discussion .yt-ui-menu-content ul:focus {
+    outline: none;
+}
+
+#watch-discussion .yt-spinner-img {
+    background: url(https://s.ytimg.com/yts/img/icn_loading_animated-vflff1Mjj.gif) no-repeat center;
+}
+
+#watch-discussion .yt-spinner-img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+
+#watch-discussion .yt-thumb {
+    overflow: hidden;
+    background: #f1f1f1;
+    font-size: 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#watch-discussion .yt-thumb .vertical-align {
+    height: 100%;
+}
+
+#watch-discussion .yt-thumb img {
+    font-size: 13px;
+    outline: none;
+}
+
+#watch-discussion .yt-thumb-clip {
+    position: absolute;
+    _position: static;
+    bottom: -100px;
+    top: -100px;
+    left: -100px;
+    right: -100px;
+    text-align: center;
+    white-space: nowrap;
+    word-break: normal;
+}
+
+#watch-discussion .yt-thumb-clip img,
+#watch-discussion .yt-thumb-clip .vertical-align {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#watch-discussion .yt-thumb-square {
+    display: block;
+    height: auto;
+}
+
+#watch-discussion .yt-thumb-square {
+    padding-bottom: 100%;
+}
+
+#watch-discussion .yt-thumb-32 {
+    width: 32px;
+}
+
+#watch-discussion .yt-thumb-48 {
+    width: 48px;
+}
+
+#watch-discussion .video-thumb {
+    position: relative;
+}
+
+#watch-discussion .yt-uix-button {
+    display: inline-block;
+    height: 28px;
+    border: solid 1px transparent;
+    padding: 0 10px;
+    outline: 0;
+    font-weight: 500;
+    font-size: 11px;
+    text-decoration: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    line-height: normal;
+    vertical-align: middle;
+    cursor: pointer;
+    *overflow: visible;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+#watch-discussion .yt-uix-button:hover {
+    text-decoration: none;
+}
+
+#watch-discussion .yt-uix-button:focus,
+#watch-discussion .yt-uix-button:focus:hover {
+    box-shadow: 0 0 0 2px rgba(27, 127, 204, 0.4);
+}
+
+#watch-discussion .yt-uix-button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+#watch-discussion .yt-uix-button .yt-uix-button-arrow {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#watch-discussion .yt-uix-button-has-icon:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#watch-discussion .yt-uix-button-has-icon.no-icon-markup:before {
+    margin-right: 6px;
+}
+
+#watch-discussion .yt-uix-button-empty.yt-uix-button-has-icon.no-icon-markup:before {
+    margin-right: 0;
+}
+
+#watch-discussion .yt-uix-button-size-small {
+    height: 20px;
+    color: #666;
+}
+
+#watch-discussion .yt-uix-button-default:hover {
+    border-color: #c6c6c6;
+    background: #f0f0f0;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
+}
+
+#watch-discussion .yt-uix-button-default:active {
+    border-color: #c6c6c6;
+    background: #e9e9e9;
+    box-shadow: inset 0 1px 0 #ddd;
+}
+
+#watch-discussion .yt-uix-button-default {
+    border-color: #d3d3d3;
+    background: #f8f8f8;
+    color: #333;
+}
+
+#watch-discussion .yt-uix-button-default:before {
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+#watch-discussion .yt-uix-button-default:hover:before {
+    opacity: .6;
+    filter: alpha(opacity=60);
+}
+
+#watch-discussion .yt-uix-button-default:active:before {
+    opacity: .8;
+    filter: alpha(opacity=80);
+}
+
+#watch-discussion .yt-uix-button-default:active:hover:before {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+#watch-discussion .yt-uix-button-primary {
+    border-color: #167ac6;
+    background: #167ac6;
+    color: #fff;
+}
+
+#watch-discussion .yt-uix-button-primary:hover {
+    background: #126db3;
+}
+
+#watch-discussion .yt-uix-button-primary:active {
+    background: #095b99;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+#watch-discussion .yt-uix-button-link {
+    padding: 0;
+    border: none;
+    height: auto;
+    background: transparent;
+    color: #167ac6;
+    font-weight: normal;
+    font-size: inherit;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+#watch-discussion .yt-uix-button-link:active,
+#watch-discussion .yt-uix-button-link:hover {
+    background: transparent;
+    text-decoration: underline;
+    box-shadow: none;
+}
+
+#watch-discussion .yt-uix-button-arrow {
+    margin-top: -3px;
+    margin-left: 5px;
+    border: 1px solid transparent;
+    border-top-color: #333;
+    border-width: 4px 4px 0;
+    width: 0;
+    height: 0;
+}
+
+#watch-discussion .yt-uix-expander-head {
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+#watch-discussion .yt-uix-expander .yt-uix-expander-collapsed-body,
+#watch-discussion .yt-uix-expander-collapsed .yt-uix-expander-body {
+    display: none;
+}
+
+#watch-discussion .yt-uix-expander-collapsed .yt-uix-expander-collapsed-body {
+    display: block;
+}
+
+#watch-discussion .yt-uix-menu {
+    display: inline-block;
+    position: relative;
+}
+
+#watch-discussion .yt-uix-menu-content {
+    position: absolute;
+    z-index: 2000000100;
+}
+
+#watch-discussion .yt-uix-menu-trigger {
+    width: 100%;
+}
+
+#watch-discussion .yt-uix-menu-content-hidden {
+    display: none;
+}
+
+#watch-discussion .yt-uix-menu .yt-uix-menu-content {
+    left: 100%;
+    top: 0;
+}
+
+#watch-discussion .comment-section-renderer-items {
+    margin-bottom: 20px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#watch-discussion .comment-renderer {
+    overflow: hidden;
+    position: relative;
+    padding-right: 20px;
+}
+
+#watch-discussion .comment-author-thumbnail {
+    float: left;
+    margin-right: 10px;
+}
+
+#watch-discussion .comment-renderer .comment-renderer-content {
+    overflow: hidden;
+    min-height: 48px;
+}
+
+#watch-discussion .comment-renderer .comment-renderer-like-count.on {
+    display: none;
+}
+
+#watch-discussion .comment-renderer .comment-renderer-like-count.off {
+    display: inline;
+}
+
+#watch-discussion .comment-section-items-loading {
+    display: none;
+    left: 50%;
+    position: relative;
+    top: 38%;
+}
+
+#watch-discussion .comment-action-buttons-renderer-thumb {
+    cursor: pointer;
+}
+
+#watch-discussion .comment-action-buttons-toolbar .yt-uix-button {
+    border: none;
+    vertical-align: top;
+}
+
+#watch-discussion .sprite-comment-actions {
+    height: 14px;
+    padding: 0 3px;
+    vertical-align: top;
+    background: transparent;
+    box-shadow: none;
+}
+
+#watch-discussion .sprite-comment-actions:hover {
+    box-shadow: none;
+}
+
+#watch-discussion .sprite-comment-actions:before {
+    opacity: .54;
+}
+
+#watch-discussion .comment-renderer .sprite-comment-actions:hover:before {
+    opacity: .6;
+}
+
+.sprite-dislike:before {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -255px -36px;
+    background-size: auto;
+    width: 14px;
+    height: 14px;
+}
+
+.sprite-like:before {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -255px 0;
+    background-size: auto;
+    width: 14px;
+    height: 14px;
+}
+
+.comment-section-sort-menu {
+    margin-bottom: 20px;
+}
+
+.comment-renderer-loading {
+    display: none;
+    left: 45%;
+    position: absolute;
+}
+
+.comment-renderer-like-count {
+    margin-right: 8px;
+    color: #128ee9;
+    font-size: 9pt;
+    vertical-align: top;
+}
+
+.comment-author-text {
+    color: #128ee9;
+    font-weight: 500;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.comment-renderer-header .comment-renderer-time {
+    color: #767676;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+.comment-renderer-header .comment-renderer-time a {
+    color: #767676;
+}
+
+.comment-renderer-text {
+    margin: 3px 0 8px;
+}
+
+.comment-renderer-text-content {
+    max-height: 65px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 8px;
+}
+
+.comment-text-toggle {
+    margin: -8px 0 10px;
+}
+
+.comment-replies-renderer {
+    margin-left: 58px;
+}
+
+.comment-replies-renderer .comment-renderer {
+    margin: 12px 0;
+}
+
+.comment-replies-renderer .comment-renderer-content {
+    min-height: 32px;
+}
+
+.comment-replies-renderer-paginator {
+    display: block;
+    margin: 6px 0 0;
+    color: #2793e6;
+    font-weight: 500;
+}
+
+.comment-replies-renderer-view,
+.comment-replies-renderer-hide {
+    margin: 6px 0 0;
+    color: #2793e6;
+    font-weight: 500;
+}
+
+.comment-replies-renderer-expander-down:after {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -20px 0;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    content: "";
+    display: inline-block;
+    opacity: .7;
+    vertical-align: text-bottom;
+}
+
+.comment-replies-renderer-expander-up:after {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -235px -32px;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    content: "";
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.comment-replies-renderer-paginator:hover:after,
+.comment-replies-renderer-view:hover:after {
+    opacity: 1;
+}
+
+.comment-section-header-renderer {
+    padding: 0 0 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #555;
+}
+
+.comment-section-header-renderer .alternate-content-link {
+    margin-left: 15px;
+}
+
+.comment-simplebox {
+    background-color: #fff;
+    overflow: hidden;
+    display: none;
+    position: relative;
+}
+
+.comment-simplebox-frame {
+    border: 1px solid #d5d5d5;
+    border-radius: 2px;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, .05);
+    margin-left: 11px;
+    margin-bottom: 8px;
+    padding: 10px;
+    min-height: 28px;
+}
+
+.comment-simplebox-arrow {
+    height: 12px;
+    position: absolute;
+    top: 0;
+    width: 12px;
+    left: 0;
+    margin: 0;
+}
+
+.comment-simplebox-arrow .arrow-inner {
+    border: 7px solid #fff;
+    left: 2px;
+    top: 1px;
+    z-index: 1;
+}
+
+.comment-simplebox-arrow .arrow-outer {
+    border: 6px solid #d5d5d5;
+    left: 0;
+    top: 0;
+}
+
+.comment-simplebox-arrow .arrow-inner,
+.comment-simplebox-arrow .arrow-outer {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    position: absolute;
+}
+
+.comment-simplebox-error-message {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-basis: 0;
+    flex-basis: 0;
+    -webkit-align-self: center;
+    align-self: center;
+    color: #e62117;
+    font-size: 11px;
+    margin-left: 11px;
+}
+
+.comment-simplebox-error-message:empty:after {
+    content: attr(data-placeholder);
+}
+
+.comment-simplebox-text,
+.comment-simplebox-prompt {
+    background-color: #fff;
+    color: #333;
+    line-height: 16px;
+    text-align: left;
+}
+
+.comment-simplebox-text {
+    min-height: inherit;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
+
+.comment-simplebox-text:empty:after {
+    content: attr(data-placeholder);
+    color: #b8b8b8;
+    display: inline-block;
+    width: 0;
+    white-space: nowrap;
+}
+
+.comment-simplebox-prompt {
+    font-weight: 500;
+    word-wrap: normal;
+}
+
+.comment-simplebox-text:focus {
+    outline: 0;
+}
+
+.comment-simplebox-controls {
+    display: -moz-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+
+.comment-simplebox-buttons {
+    margin-left: auto;
+}
+
+.comment-simplebox-buttons>* {
+    margin-left: 10px;
+}
+
+.comment-simplebox-loading {
+    display: none;
+    left: 50%;
+    position: absolute;
+    top: 38%;
+}
+
+.comment-simplebox-renderer {
+    overflow: hidden;
+    position: relative;
+}
+
+.comment-simplebox-renderer {
+    padding: 0 0 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.comment-simplebox-renderer-collapsed {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+}
+
+.comment-simplebox-renderer-collapsed-content {
+    border: 1px solid #d5d5d5;
+    color: #b8b8b8;
+    cursor: pointer;
+    margin-left: 11px;
+    min-height: 28px;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.comment-renderer-reply {
+    color: #555;
+    opacity: .75;
+}
+
+.comment-renderer-reply:hover,
+.comment-renderer:hover .comment-renderer-reply {
+    text-decoration: none;
+    opacity: 1;
+}
+
+#watch-discussion .comment-renderer-reply:after {
+    content: "•";
+    margin: 0 5px;
+}
+
+.comment-thread-renderer {
+    margin: 0 10px 30px 0;
+    line-height: 1.3em;
+}
+
+.comment-section-renderer-paginator {
+    margin: 15px 25px;
+    border: 1px solid #d3d3d3;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 12px;
+    outline: 0;
+    height: 100%;
+    width: 95%;
+    background-image: -moz-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: -ms-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: -o-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: -webkit-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: linear-gradient(to top, #fcfcfc 0, #f8f8f8 100%);
+}
+
+.comment-section-renderer-paginator:hover {
+    background-color: #f0f0f0;
+    border-color: #c6c6c6;
+    text-decoration: none;
+    background-image: -moz-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: -ms-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: -o-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: -webkit-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: linear-gradient(to top, #f0f0f0 0, #f8f8f8 100%);
+}
+
+.feedback-banner {
+    padding: 10px 0;
+    background: #fcf4d8;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.yt-alert-naked.yt-alert.zero-step-tooltip {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+body:-webkit-full-screen-ancestor>:not(:-webkit-full-screen-ancestor):not(:-webkit-full-screen),
+body :-webkit-full-screen-ancestor>:not(:-webkit-full-screen-ancestor):not(:-webkit-full-screen) {
+    display: none!important;
+}
+
+.subscription-list-item.selected:not(:hover) .added-badge {
+    display: inherit;
+}
+
+
+.comment-section-renderer-items {
+    margin-bottom: 20px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.comment-renderer {
+    overflow: hidden;
+    position: relative;
+    padding-right: 20px;
+}
+
+.comment-author-thumbnail {
+    float: left;
+    margin-right: 10px;
+}
+
+.comment-renderer .comment-renderer-content {
+    overflow: hidden;
+    min-height: 48px;
+}
+
+.comment-renderer .comment-renderer-like-count.on {
+    display: none;
+}
+
+.comment-renderer .comment-renderer-like-count.off {
+    display: inline;
+}
+
+.comment-section-items-loading {
+    display: none;
+    left: 50%;
+    position: relative;
+    top: 38%;
+}
+
+.comment-action-buttons-renderer-thumb {
+    cursor: pointer;
+}
+
+.comment-action-buttons-toolbar .yt-uix-button {
+    border: none;
+    vertical-align: top;
+}
+
+.sprite-comment-actions {
+    height: 14px;
+    padding: 0 3px;
+    vertical-align: top;
+    background: transparent;
+    box-shadow: none;
+}
+
+#watch-discussion .sprite-comment-actions:hover {
+    box-shadow: none;
+}
+
+#watch-discussion .sprite-comment-actions:before {
+    opacity: .54;
+}
+
+#watch-discussion .comment-renderer .sprite-comment-actions:hover:before {
+    opacity: .6;
+}
+
+.sprite-dislike:before {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -255px -36px;
+    background-size: auto;
+    width: 14px;
+    height: 14px;
+}
+
+.sprite-like:before {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -255px 0;
+    background-size: auto;
+    width: 14px;
+    height: 14px;
+}
+
+.comment-section-sort-menu {
+    margin-bottom: 20px;
+}
+
+.comment-renderer-loading {
+    display: none;
+    left: 45%;
+    position: absolute;
+}
+
+.comment-renderer-like-count {
+    margin-right: 8px;
+    color: #128ee9;
+    font-size: 9pt;
+    vertical-align: top;
+}
+
+.comment-author-text {
+    color: #128ee9;
+    font-weight: 500;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.comment-renderer-header .comment-renderer-time {
+    color: #767676;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+.comment-renderer-header .comment-renderer-time a {
+    color: #767676;
+}
+
+.comment-renderer-text {
+    margin: 3px 0 8px;
+}
+
+.comment-renderer-text-content {
+    max-height: 65px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 8px;
+}
+
+.comment-text-toggle {
+    margin: -8px 0 10px;
+}
+
+.comment-replies-renderer {
+    margin-left: 58px;
+}
+
+.comment-replies-renderer .comment-renderer {
+    margin: 12px 0;
+}
+
+.comment-replies-renderer .comment-renderer-content {
+    min-height: 32px;
+}
+
+.comment-replies-renderer-paginator {
+    display: block;
+    margin: 6px 0 0;
+    color: #2793e6;
+    font-weight: 500;
+}
+
+.comment-replies-renderer-view,
+.comment-replies-renderer-hide {
+    margin: 6px 0 0;
+    color: #2793e6;
+    font-weight: 500;
+}
+
+.comment-replies-renderer-expander-down:after {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -20px 0;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    content: "";
+    display: inline-block;
+    opacity: .7;
+    vertical-align: text-bottom;
+}
+
+.comment-replies-renderer-expander-up:after {
+    background: no-repeat url(https://s.ytimg.com/yts/imgbin/www-comments-vfltA6rO3.png) -235px -32px;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    content: "";
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.comment-replies-renderer-paginator:hover:after,
+.comment-replies-renderer-view:hover:after {
+    opacity: 1;
+}
+
+.comment-section-header-renderer {
+    padding: 0 0 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #555;
+}
+
+.comment-section-header-renderer .alternate-content-link {
+    margin-left: 15px;
+}
+
+.comment-simplebox {
+    background-color: #fff;
+    overflow: hidden;
+    display: none;
+    position: relative;
+}
+
+.comment-simplebox-frame {
+    border: 1px solid #d5d5d5;
+    border-radius: 2px;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, .05);
+    margin-left: 11px;
+    margin-bottom: 8px;
+    padding: 10px;
+    min-height: 28px;
+}
+
+.comment-simplebox-arrow {
+    height: 12px;
+    position: absolute;
+    top: 0;
+    width: 12px;
+    left: 0;
+    margin: 0;
+}
+
+.comment-simplebox-arrow .arrow-inner {
+    border: 7px solid #fff;
+    left: 2px;
+    top: 1px;
+    z-index: 1;
+}
+
+.comment-simplebox-arrow .arrow-outer {
+    border: 6px solid #d5d5d5;
+    left: 0;
+    top: 0;
+}
+
+.comment-simplebox-arrow .arrow-inner,
+.comment-simplebox-arrow .arrow-outer {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    position: absolute;
+}
+
+.comment-simplebox-error-message {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-basis: 0;
+    flex-basis: 0;
+    -webkit-align-self: center;
+    align-self: center;
+    color: #e62117;
+    font-size: 11px;
+    margin-left: 11px;
+}
+
+.comment-simplebox-error-message:empty:after {
+    content: attr(data-placeholder);
+}
+
+.comment-simplebox-text,
+.comment-simplebox-prompt {
+    background-color: #fff;
+    color: #333;
+    line-height: 16px;
+    text-align: left;
+}
+
+.comment-simplebox-text {
+    min-height: inherit;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
+
+.comment-simplebox-text:empty:after {
+    content: attr(data-placeholder);
+    color: #b8b8b8;
+    display: inline-block;
+    width: 0;
+    white-space: nowrap;
+}
+
+.comment-simplebox-prompt {
+    font-weight: 500;
+    word-wrap: normal;
+}
+
+.comment-simplebox-text:focus {
+    outline: 0;
+}
+
+.comment-simplebox-controls {
+    display: -moz-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+
+.comment-simplebox-buttons {
+    margin-left: auto;
+}
+
+.comment-simplebox-buttons>* {
+    margin-left: 10px;
+}
+
+.comment-simplebox-loading {
+    display: none;
+    left: 50%;
+    position: absolute;
+    top: 38%;
+}
+
+.comment-simplebox-renderer {
+    overflow: hidden;
+    position: relative;
+}
+
+.comment-simplebox-renderer {
+    padding: 0 0 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.comment-simplebox-renderer-collapsed {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+}
+
+.comment-simplebox-renderer-collapsed-content {
+    border: 1px solid #d5d5d5;
+    color: #b8b8b8;
+    cursor: pointer;
+    margin-left: 11px;
+    min-height: 28px;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+#watch-discussion .comment-renderer-reply {
+    color: #555;
+    opacity: .75;
+}
+
+#watch-discussion .comment-renderer-reply:hover,
+#watch-discussion .comment-renderer:hover .comment-renderer-reply {
+    text-decoration: none;
+    opacity: 1;
+}
+
+#watch-discussion .comment-renderer-reply:after {
+    content: "\\002022";
+    margin: 0 5px;
+}
+
+.comment-thread-renderer {
+    margin: 0 10px 30px 0;
+    line-height: 1.3em;
+}
+
+.comment-section-renderer-paginator {
+    margin: 15px 25px;
+    border: 1px solid #d3d3d3;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 12px;
+    outline: 0;
+    height: 100%;
+    width: 95%;
+    background-image: -moz-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: -ms-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: -o-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: -webkit-linear-gradient(bottom, #fcfcfc 0, #f8f8f8 100%);
+    background-image: linear-gradient(to top, #fcfcfc 0, #f8f8f8 100%);
+}
+
+.comment-section-renderer-paginator:hover {
+    background-color: #f0f0f0;
+    border-color: #c6c6c6;
+    text-decoration: none;
+    background-image: -moz-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: -ms-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: -o-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: -webkit-linear-gradient(bottom, #f0f0f0 0, #f8f8f8 100%);
+    background-image: linear-gradient(to top, #f0f0f0 0, #f8f8f8 100%);
+}
+
+.feedback-banner {
+    padding: 10px 0;
+    background: #fcf4d8;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.yt-alert-naked.yt-alert.zero-step-tooltip {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.branded-page-box, .branded-page-box-padding {
+    padding: 15px;
+}
+
+#watch-discussion h1, #watch-discussion h2 {
+	font-weight: normal;
+}
+
+#watch-discussion strong, #watch-discussion b {
+	font-weight: 500;
+}
+
+ .comment-renderer-reply {
+    color: #555;
+    opacity: .75;
+}
+
+ .yt-uix-button-link {
+    padding: 0;
+    border: none;
+    height: auto;
+    background: transparent;
+    color: #167ac6;
+    font-weight: normal;
+    font-size: inherit;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.comment-renderer-action-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#watch-discussion .yt-uix-button-action-menu .yt-uix-button-arrow {
+    display: none;
+}
+#watch-discussion .yt-uix-button-action-menu::before, .yt-uix-button-lockup-action-menu::before {
+    opacity: .8;
+    background: no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-vfl44vgwb.png) -86px -329px;
+        background-size: auto;
+    background-size: auto;
+    width: 13px;
+    height: 13px;
+}
+#watch-discussion .yt-uix-button-action-menu, .yt-uix-button-action-menu:focus:hover, .yt-uix-button-lockup-action-menu, .yt-uix-button-lockup-action-menu:focus:hover {
+    box-shadow: none;
+}
+#browse-items-primary .item-section > li > .yt-lockup-tile .yt-uix-menu-top-level-button, .yt-section-hover-container .yt-uix-button-action-menu, .yt-section-hover-container .yt-uix-menu-top-level-button {
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+#browse-items-primary .item-section>li>.yt-lockup-tile:hover .yt-uix-menu-top-level-button,
+.yt-section-hover-container .yt-uix-button-action-menu.yt-uix-button-active,
+.yt-section-hover-container .yt-uix-menu-top-level-flow-button,
+.yt-section-hover-container:hover .yt-uix-button-action-menu,
+.yt-section-hover-container:hover .yt-uix-menu-top-level-button,
+.yt-lockup .yt-uix-button-action-menu.yt-uix-button-active,
+.yt-lockup:hover .yt-uix-button-action-menu,
+.yt-uix-menu-trigger.yt-uix-menu-trigger-selected .yt-uix-button-action-menu,
+.yt-uix-button-action-menu:focus,
+.yt-lockup .yt-uix-button-lockup-action-menu.yt-uix-button-active,
+.yt-lockup:hover .yt-uix-button-lockup-action-menu,
+.yt-uix-button-lockup-action-menu:focus,
+.yt-uix-menu-trigger.yt-uix-menu-trigger-selected .yt-uix-button-lockup-action-menu,
+.video-list-item:hover .related-item-action-menu .yt-uix-button {
+ opacity:1;
+ filter:alpha(opacity=100)
+}
+
+ytd-comments {
+    display: none !important;
+}`);
 	
 }
 
