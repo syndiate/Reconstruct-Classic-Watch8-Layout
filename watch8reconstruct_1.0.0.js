@@ -494,7 +494,7 @@ if (document.getElementById("subscriber-watch-count").innerHTML == "<!--css-buil
     }
     // For some reason, the channel icon fails to load unless it is first loaded on the new layout; wait for that
     var ceci = setInterval(function() {
-        if (document.getElementsByClassName("yt-simple-endpoint style-scope ytd-video-owner-renderer")[0].children[0].children[0].getAttribute("src")) {
+        if (document.querySelector("ytd-video-owner-renderer.ytd-video-secondary-info-renderer > a:nth-child(1) > yt-img-shadow:nth-child(1) > img:nth-child(1)").src) {
             clearInterval(ceci);
             loadChannelIcon();
         }
@@ -526,8 +526,9 @@ if (document.getElementById("subscriber-watch-count").innerHTML == "<!--css-buil
     }
 
     function loadChannelIcon() {
-        document.getElementById("youtube-channel-icon").setAttribute("src", document.getElementsByClassName("yt-simple-endpoint style-scope ytd-video-owner-renderer")[0].children[0].children[0].getAttribute("src"));
-        document.getElementsByClassName("yt-user-photo g-hovercard yt-uix-sessionlink      spf-link ")[0].setAttribute("href", document.getElementById("meta-contents").children[0].children[0].children[1].children[0].children[0].getAttribute("href"));
+		console.log("Called loadChannelIcon()");
+        document.getElementById("youtube-channel-icon").setAttribute("src", document.querySelector("ytd-video-owner-renderer.ytd-video-secondary-info-renderer > a:nth-child(1) > yt-img-shadow:nth-child(1) > img:nth-child(1)").src);
+        document.getElementsByClassName("yt-user-photo g-hovercard yt-uix-sessionlink      spf-link ")[0].setAttribute("href", document.querySelector("ytd-video-owner-renderer.ytd-video-secondary-info-renderer > a:nth-child(1)").href);
     }
     function loadChannelLinkOnName() {
         document.getElementById("channel-name-stuff").setAttribute("href", document.getElementsByClassName("style-scope ytd-video-owner-renderer")[2].children[0].children[0].children[0].children[0].children[0].getAttribute("href"));
