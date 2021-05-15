@@ -1,3 +1,23 @@
+// ==UserScript==
+// @name        comments test
+// @version 1.0.0
+// @description  comments test
+// @author Valmoiiaa
+// @require https://unpkg.com/vue@2.6.12/dist/vue.js
+// @require https://unpkg.com/xfetch-js@0.5.0/dist/xfetch.min.js
+// @match *://*.youtube.com/*
+// @match *://*.youtu.be/*
+// @grant GM_addStyle
+// @grant GM_getValue
+// @grant GM.getValue
+// @grant GM.setValue
+// @grant GM_setValue
+// @grant GM_registerMenuCommand
+// @grant unsafeWindow
+// @run-at document-start
+// @license MIT
+// ==/UserScript==
+
 // shorthand definitions
 
 var d = document;
@@ -14,6 +34,13 @@ var $a = function(id) { return document.querySelectorAll(id); };
 */
 
 var isLoaded = false;
+var tokenidstore;
+var nextcontinuation;
+var nextitct;
+var nextxsrf;
+var cachexcrf;
+var cache
+
 
 function i18n(string)
 {
@@ -135,7 +162,7 @@ function getCommentTemplate(template, arg1, arg2, arg3, arg4, arg5, arg6)
 			return (
 `<div id="comment-section-renderer" class="comment-section-renderer vve-check" data-visibility-tracking="CAsQuy8iEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-child-tracking="">
           <h2 class="comment-section-header-renderer" tabindex="0">
-<b>Comments</b> • 0<span class="alternate-content-link"></span>  </h2>
+<b>Comments</b> • ` + arg2 + `<span class="alternate-content-link"></span>  </h2>
 
           
 <div class="comment-simplebox-renderer yt-uix-servicelink vve-check" data-servicelink="itct=CA0QwXUiEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-visibility-tracking="CA0QwXUiEwiOxOGjvpnRAhUXqH4KHR1AD08omxw">
@@ -143,7 +170,7 @@ function getCommentTemplate(template, arg1, arg2, arg3, arg4, arg5, arg6)
     <span class="yt-thumb-square">
       <span class="yt-thumb-clip">
         
-  <img alt="Default profile photo" role="img" tabindex="0" data-ytimg="1" src="//s.ytimg.com/yts/img/avatar_48-vfllY0UTT.png" onload=";__ytRIL(this)" width="48" height="48">
+  <img alt="Default profile photo" role="img" tabindex="0" data-ytimg="1" src="` + arg3 + `" onload=";__ytRIL(this)" width="48" height="48">
 
         <span class="vertical-align"></span>
       </span>
@@ -173,20 +200,7 @@ function getCommentTemplate(template, arg1, arg2, arg3, arg4, arg5, arg6)
 
 
 
-    <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default load-more-button yt-uix-load-more comment-section-renderer-paginator yt-uix-sessionlink" type="button" onclick=";return false;" aria-label="Show more
-" data-uix-load-more-target-id="comment-section-renderer-items" data-uix-load-more-post-body="page_token=CqgCQ2cwUXhPcmlpTDZaMFFJZ0FDZ0JFcjBCQ0FBUXFPdTN0N2laMFFJcXJ3RzdqK1NLcTRQKzN3T2FudkR1OVlEYnBnUGVqdUNqaWVYV2E4ZWNuYTM3eXFlRkE1YVF2dHkycHB5d0EvUGVvK21IcHVSN2dZL254L1NONHhiOThZbjNvYWo1NkFMNC82bU4vSnl5Z2dMU21LdjZ2L3F0d2dQM3VJbmp6N0dJMEFLQnVKdmFvdVdHa0FHRnRkblBxZkxQM3dMeXU4dmo1cGpTNmdPV3FvdTZtK2o2aHdLcjBvV1VwOGJad2dPOHlkVGdqc1RMV0tHUTQreldwS3dwaUlLNDU3VEs2YmtDNW9PSnV0anVnTklCR0FFZ0ZDaWdzL2p3aTY3QWgyYz0iHBIYVUMtbEhKWlIzR3F4bTI0X1ZkX0FKNVl3KAEoFA%253D%253D" data-sessionlink="itct=CAsQuy8iEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-uix-load-more-href="/comment_service_ajax?action_get_comments=1" data-sessionlink-target="/comment_service_ajax?action_get_comments=1" data-uix-load-more-post="true" style="display: none;"><span class="yt-uix-button-content">  <span class="load-more-loading hid">
-      <span class="yt-spinner">
-      <span title="Loading icon" class="yt-spinner-img  yt-sprite"></span>
-
-Loading...
-  </span>
-
-  </span>
-  <span class="load-more-text">
-    Show more
-
-  </span>
-</span></button>
+    ` + (arg4 ? getCommentTemplate("cMainLoadMore") : "" ) + `
 
 
         <div class="comment-simplebox" id="comment-simplebox"><div class="comment-simplebox-arrow"><div class="arrow-inner"></div><div class="arrow-outer"></div></div><div class="comment-simplebox-frame">
@@ -205,9 +219,6 @@ Loading...
 		break;
 		
 		case "cMainSort":
-		break;
-		
-		case "cCommentHead":
 		break;
 		
 		case "cCommentBody":
@@ -238,6 +249,21 @@ Loading...
 		break;
 		
 		case "cMainLoadMore":
+			return (
+`<button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default load-more-button yt-uix-load-more comment-section-renderer-paginator yt-uix-sessionlink" type="button" onclick=";return false;" aria-label="Show more
+" data-uix-load-more-target-id="comment-section-renderer-items" data-uix-load-more-post-body="page_token=CqgCQ2cwUXhPcmlpTDZaMFFJZ0FDZ0JFcjBCQ0FBUXFPdTN0N2laMFFJcXJ3RzdqK1NLcTRQKzN3T2FudkR1OVlEYnBnUGVqdUNqaWVYV2E4ZWNuYTM3eXFlRkE1YVF2dHkycHB5d0EvUGVvK21IcHVSN2dZL254L1NONHhiOThZbjNvYWo1NkFMNC82bU4vSnl5Z2dMU21LdjZ2L3F0d2dQM3VJbmp6N0dJMEFLQnVKdmFvdVdHa0FHRnRkblBxZkxQM3dMeXU4dmo1cGpTNmdPV3FvdTZtK2o2aHdLcjBvV1VwOGJad2dPOHlkVGdqc1RMV0tHUTQreldwS3dwaUlLNDU3VEs2YmtDNW9PSnV0anVnTklCR0FFZ0ZDaWdzL2p3aTY3QWgyYz0iHBIYVUMtbEhKWlIzR3F4bTI0X1ZkX0FKNVl3KAEoFA%253D%253D" data-sessionlink="itct=CAsQuy8iEwiOxOGjvpnRAhUXqH4KHR1AD08omxw" data-uix-load-more-href="/comment_service_ajax?action_get_comments=1" data-sessionlink-target="/comment_service_ajax?action_get_comments=1" data-uix-load-more-post="true"><span class="yt-uix-button-content">  <span class="load-more-loading hid">
+      <span class="yt-spinner">
+      <span title="Loading icon" class="yt-spinner-img  yt-sprite"></span>
+
+Loading...
+  </span>
+
+  </span>
+  <span class="load-more-text">
+    Show more
+
+  </span>
+</span></button>`);
 		break;
 		
 	}
@@ -285,14 +311,121 @@ function waitForElementLoad(selector, callback, checkFrequency, timeout)
 
 // TODO: comment reconstruct and futureproofing
 
-function cCreateComment(chOwner, cOwner, pic, name, nUrl, cUrl, cTime, cIsEdited, content, like, rExists, rCount, isHeart)
+// chOwner, cOwner, pic, name, nUrl, cUrl, cTime, cIsEdited, content, like, rExists, rCount, isHeart
+
+function cCreateComment(commentText, channelPic, channelName, channelUrl, commentUrl, commentTime, commentLike, isReply, isLike, hasLike, isDislike, isHeart, repliesText)
 {
 	
-	// -- TEMP BLOCK -- //
 	
-	// ---------------- //
 	
-	return 0;
+	var comment = (
+`<section class="` + (isReply ? `comment-replies-renderer` : `comment-thread-renderer`) + ` vve-check" data-visibility-tracking="CNQBEMJ1IhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-priority="0">
+<div class="comment-renderer vve-check" data-visibility-tracking="CKQCELZ1IhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-cid="z12xyjpzcqbrjbarj04cdv2x5x3ujbaxgdg">
+<a href="` + channelUrl + `" class=" yt-uix-sessionlink g-hovercard      spf-link " data-sessionlink="itct=CKQCELZ1IhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-ytid="UC-jvr-GfjbEfb_8xZMGkVvA">  <span class="video-thumb comment-author-thumbnail yt-thumb ` + (isReply ? `yt-thumb-32` : `yt-thumb-48`) + `">
+    <span class="yt-thumb-square">
+      <span class="yt-thumb-clip">
+        
+  <img alt="` + channelName + `" role="img" tabindex="0" data-ytimg="1" src="` + channelPic + `" onload=";__ytRIL(this)" ` + (isReply ? `width="32" height="32"` : `width="48" height="48"`) + `>
+
+        <span class="vertical-align"></span>
+      </span>
+    </span>
+  </span>
+</a>
+
+
+    <div id="comment-renderer-edit-z12xyjpzcqbrjbarj04cdv2x5x3ujbaxgdg" class="comment-simplebox-edit" data-editable-content-text="" data-image-src="" data-video-id="">
+    </div>
+<div class="comment-renderer-content"><div class="comment-renderer-header"><a href="` + channelUrl + `" class="comment-author-text yt-uix-sessionlink g-hovercard      spf-link " data-sessionlink="itct=CKQCELZ1IhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-ytid="UC-jvr-GfjbEfb_8xZMGkVvA">` + channelName + `</a><span class="comment-renderer-time" tabindex="0"><a href="` + commentUrl + `" class=" yt-uix-sessionlink      spf-link " data-sessionlink="itct=CKQCELZ1IhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc" data-ytid="UC-lHJZR3Gqxm24_Vd_AJ5Yw">` + commentTime + `</a></span></div><div class="comment-renderer-text" tabindex="0" role="article"><div class="comment-renderer-text-content">` + commentText + `﻿</div><div class="comment-text-toggle hid"><div class="comment-text-toggle-link read-more"><button class="yt-uix-button yt-uix-button-size-default yt-uix-button-link" type="button" onclick="return false;"><span class="yt-uix-button-content">Read more
+</span></button></div><div class="comment-text-toggle-link show-less hid"><button class="yt-uix-button yt-uix-button-size-default yt-uix-button-link" type="button" onclick="return false;"><span class="yt-uix-button-content">Show less
+</span></button></div></div></div>
+
+<div class="comment-renderer-footer" data-vote-status="INDIFFERENT"><div class="comment-action-buttons-toolbar">
+
+    <button class="yt-uix-button yt-uix-button-size-small yt-uix-button-link comment-renderer-reply yt-uix-sessionlink" type="button" onclick=";window.location.href=this.getAttribute('href');return false;" href="https://accounts.google.com/ServiceLogin?service=youtube&amp;amp;uilel=3&amp;amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26next%3D%252Fchannel%252FUC-lHJZR3Gqxm24_Vd_AJ5Yw%26hl%3Den%26app%3DNone&amp;amp;hl=en&amp;amp;passive=true" role="link" data-sessionlink="itct=CKkCEPBbIhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc"><span class="yt-uix-button-content">Reply</span></button>
+
+
+    ` + (hasLike ? `
+	<span class="comment-renderer-like-count off">` + commentLike + `</span>
+	<span class="comment-renderer-like-count on">` + (commentLike * 1 + 1) + `</span>` : `
+	<span class="comment-renderer-like-count on">1</span>`) + `
+
+  <span role="radiogroup">
+        <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup comment-action-buttons-renderer-thumb yt-uix-sessionlink sprite-comment-actions sprite-like i-a-v-sprite-like" type="button" onclick=";window.location.href=this.getAttribute('href');return false;" aria-checked="false" aria-label="Like" href="https://accounts.google.com/ServiceLogin?service=youtube&amp;amp;uilel=3&amp;amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26next%3D%252Fchannel%252FUC-lHJZR3Gqxm24_Vd_AJ5Yw%26hl%3Den%26app%3DNone&amp;amp;hl=en&amp;amp;passive=true" role="link" data-sessionlink="itct=CKoCEPBbIhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc"></button>
+
+        <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup comment-action-buttons-renderer-thumb yt-uix-sessionlink sprite-comment-actions sprite-dislike i-a-v-sprite-dislike" type="button" onclick=";window.location.href=this.getAttribute('href');return false;" aria-checked="false" aria-label="Dislike" href="https://accounts.google.com/ServiceLogin?service=youtube&amp;amp;uilel=3&amp;amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26next%3D%252Fchannel%252FUC-lHJZR3Gqxm24_Vd_AJ5Yw%26hl%3Den%26app%3DNone&amp;amp;hl=en&amp;amp;passive=true" role="link" data-sessionlink="itct=CKgCEPBbIhMIjsTho76Z0QIVF6h-Ch0dQA9PKJsc"></button>
+
+  </span>
+</div></div></div></div></section>`);
+	
+	return comment;
+	
+}
+
+function unicodeToChar(text) 
+{
+   return text.replace(/\\u[\dA-F]{4}/gi, 
+          function (match) 
+		  {
+               return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
+          });
+}
+
+async function getIdToken(r)
+{
+	async function reqGetIdToken()
+	{
+			
+		var parse = new DOMParser();
+
+		var response = await fetch(("https://www.youtube.com"), 
+		{
+			"method": 'GET',
+			"mode": 'cors',
+			"cache": 'no-cache',
+			"credientials": 'same-origin',
+			headers: 
+			{
+				'X-YOUTUBE-CLIENT-NAME': '1',
+				'X-YOUTUBE-CLIENT-VERSION': '2.20200101.01.01'
+			},
+			redirect: 'follow',
+			referrerPolicy: 'strict-origin-when-cross-origin',
+		});
+		
+		return response.text();
+		
+	}
+	
+	var html = await reqGetIdToken().then(response => html = response);
+	var parsed = new DOMParser().parseFromString(html, "text/html");
+	
+	function findScript()
+	{
+		for (i = 0; i < parsed.scripts.length; i++)
+		{
+			if (parsed.scripts[i].innerHTML.startsWith("(function() {window.ytplayer={}"))
+				{
+					return i;
+				}
+		}
+	}
+	
+	var script = parsed.scripts[findScript()].innerHTML;
+	var index = script.search("ID_TOKEN");
+	var proc0 = script.substring(index);
+	var proc1 = proc0.substring(0, proc0.search(/(?:[",]){2}/g));
+	var response = unicodeToChar(decodeURIComponent(proc1.replace(/(ID_TOKEN\":\")|("")/g, "")));
+	
+	return response;
+	
+}
+
+function getIdTokenPromise()
+{
+	
+	var promiseval = getIdToken().then(response => promiseval = response);
+	return promiseval;
 	
 }
 
@@ -344,12 +477,13 @@ async function getComments()
 		encodeURIComponent(gcCommentParams.continuations[0].nextContinuationData.clickTrackingParams);
 	gccpSession =
 		encodeURIComponent(paramsData[3].xsrf_token);
+	cachexcrf = gccpSession;
 	
 	 
 	if (typeof gccpContinuation !== 'undefined' && typeof gccpTracking !== 'undefined')
 	{
 		
-		commentData = await gcGetHitchhikerComments();
+		commentData = await gcGetPbjComments();
 		
 	}
 	
@@ -378,7 +512,295 @@ async function getComments()
     
 	}
 	
+	async function gcGetPbjComments()
+	{
+		
+		// Unlike hitchhiker comments, this requires X-Youtube-Identity-Token
+		// We must retrieve this from another function.
+		
+		if (typeof tokenidstore !== 'undefined')
+		{
+			var tokenid = tokenidstore;
+		}
+		else
+		{
+			var tokenid = await getIdToken().then(response => tokenid = response);
+			tokenidstore = tokenid;
+		}
+		
+		var response = await fetch(("https://www.youtube.com/comment_service_ajax?action_get_comments=1&pbj=1&ctoken=" + gccpContinuation + "&continuation=" + gccpContinuation + "&type=next&itct=" + gccpTracking), 
+		{
+			"method": 'POST',
+			"mode": 'cors',
+			"cache": 'no-cache',
+			"credientials": 'same-origin',
+			headers: 
+			{
+				"content-type": "application/x-www-form-urlencoded",
+				'X-YOUTUBE-CLIENT-NAME': '1',
+				'X-YOUTUBE-CLIENT-VERSION': '2.20200101.01.01',
+				"X-Youtube-Identity-Token": tokenid
+			},
+			redirect: 'follow',
+			referrerPolicy: 'strict-origin-when-cross-origin',
+			body: "session_token=" + gccpSession
+		});
+		
+		return response.json();
+    
+	}
+	
 	return commentData;
+	
+}
+
+async function getMoreComments(cont, track, nextxsrf)
+{
+	
+	console.log("Called getMoreComments(cont, track)");
+	console.log("Called getMoreComments(cont, track): cont = " + cont);
+	console.log("Called getMoreComments(cont, track): track = " + track);
+	
+	videoId = (function()
+	{
+
+		return window.location.search.split(/\?|\&|\=/g)[2];
+	
+	})();
+	
+	console.log("getMoreComments(cont, track): video id resolved");
+	
+	// Request the current video page again and retrieve required data for loading comments.
+	
+	let commentData;
+	
+	gccpContinuation = 
+		cont;
+	gccpTracking = 
+		track;
+	gccpSession =
+		encodeURIComponent(cachexcrf);
+		
+	console.log("getMoreComments(cont, track): cache resolved");
+	
+	 
+	if (typeof gccpContinuation !== 'undefined' && typeof gccpTracking !== 'undefined')
+	{
+		
+		commentData = await gcGetPbjComments();
+		console.log("getMoreComments(cont, track): Awaiting gcGetPbjComments()");
+		
+	}
+	
+	async function gcGetPbjComments()
+	{
+		
+		console.log("getMoreComments(cont, track): Called gcGetPbjComments()");
+		
+		// Unlike hitchhiker comments, this requires X-Youtube-Identity-Token
+		// We must retrieve this from another function.
+		
+		if (typeof tokenidstore !== 'undefined')
+		{
+			var tokenid = tokenidstore;
+			console.log("getMoreComments(cont, track): Using cached token");
+		}
+		else
+		{
+			console.log("getMoreComments(cont, track): Generating new token");
+			var tokenid = await getIdToken().then(response => tokenid = response);
+			tokenidstore = tokenid;
+		}
+		
+		var response = await fetch(("https://www.youtube.com/comment_service_ajax?action_get_comments=1&pbj=1&ctoken=" + gccpContinuation + "&continuation=" + gccpContinuation + "&type=next&itct=" + gccpTracking), 
+		{
+			"method": 'POST',
+			"mode": 'cors',
+			"cache": 'no-cache',
+			"credientials": 'same-origin',
+			headers: 
+			{
+				"content-type": "application/x-www-form-urlencoded",
+				'X-YOUTUBE-CLIENT-NAME': '1',
+				'X-YOUTUBE-CLIENT-VERSION': '2.20200101.01.01',
+				"X-Youtube-Identity-Token": tokenid
+			},
+			redirect: 'follow',
+			referrerPolicy: 'strict-origin-when-cross-origin',
+			body: "session_token=" + nextxsrf
+		});
+		
+		console.log("getMoreComments(cont, track): Proper fetch");
+		
+		console.log("getMoreComments(cont, track): Returned response");
+		return response.json();
+		
+    
+	}
+	
+	console.log("getMoreComments(cont, track): Returned commentData");
+	return commentData;
+	
+	
+}
+
+function buildComment(comments, i)
+{
+	
+	// bool comments.response.continuationContents.itemSectionContinuation.contents[0].commentThreadRenderer.comment.commentRenderer.authorIsChannelOwner
+	// very useful ^^
+	
+	// function cCreateComment(commentText, channelPic, channelName, channelUrl, commentUrl, commentTime, commentLike, isReply, isLike, isDislike, isHeart, repliesText)
+	
+	function getCommentText()
+	{
+		var finaltext = "";
+		
+		for (o = 0; o < comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.contentText.runs.length; o++)
+		{
+			
+			finaltext = finaltext + comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.contentText.runs[o].text;
+			console.log(finaltext);
+			console.log(o);
+			
+		}
+		
+		return finaltext;
+	}
+	
+	var commentText = getCommentText();
+	var channelPic = comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.authorThumbnail.thumbnails[0].url;
+	var channelName = comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.authorText.simpleText;
+	var channelUrl = comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.authorEndpoint.browseEndpoint.canonicalBaseUrl;
+	var commentUrl = "";
+	var commentTime = comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.publishedTimeText.runs[0].text;
+	if (typeof comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.voteCount !== 'undefined')
+	{
+		var commentLike = comments.response.continuationContents.itemSectionContinuation.contents[i].commentThreadRenderer.comment.commentRenderer.likeCount;
+		var hasLike = true;
+	}
+	else
+	{
+		var commentLike = "";
+		var hasLike = false;
+	}
+	var isReply = false;
+	var isLike = false;
+	var isDislike = false;
+	var isHeart = false;
+	var repliesText = "";
+	
+	
+	return cCreateComment(commentText, channelPic, channelName, channelUrl, commentUrl, commentTime, commentLike, isReply, isLike, hasLike, isDislike, isHeart, repliesText);
+	// return cCreateComment("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l");
+	
+	
+}
+
+function buildCommentTree(comments)
+{
+	
+	var commentTree = "";
+	
+	for (i = 0; i < (comments.response.continuationContents.itemSectionContinuation.contents.length); i++)
+	{
+		
+		var newComment = buildComment(comments, i);
+		commentTree += newComment;
+		
+		
+	}
+	
+	return commentTree;
+	
+}
+
+function initBuildComments(comments)
+{
+	
+	function getHasCont()
+	{
+		
+		if (typeof comments.response.continuationContents.itemSectionContinuation.continuations !== 'undefined')
+		{
+			nextcontinuation = comments.response.continuationContents.itemSectionContinuation.continuations[0].nextContinuationData.continuation;
+			nextitct = comments.response.continuationContents.itemSectionContinuation.continuations[0].nextContinuationData.clickTrackingParams;
+			nextxsrf = comments.xsrf_token;
+			
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	
+	var commentsCount = comments.response.continuationContents.itemSectionContinuation.header.commentsHeaderRenderer.countText.runs[0].text;
+	var userPfp = comments.response.continuationContents.itemSectionContinuation.header.commentsHeaderRenderer.createRenderer.commentSimpleboxRenderer.authorThumbnail.thumbnails[1].url;
+	var hasCont = getHasCont();
+	
+	
+	var response = getCommentTemplate("cMainHead", buildCommentTree(comments), commentsCount, userPfp, hasCont)
+	return response;
+	
+}
+
+function loadMoreButtonFunctionality()
+{
+	
+	
+	function lmLoadMoreOn()
+	{
+		$(".comment-section-renderer-paginator").setAttribute("disabled", "");
+		$(".comment-section-renderer-paginator .load-more-loading").setAttribute("class", $(".comment-section-renderer-paginator .load-more-loading").getAttribute("class").replace("hid", ""));
+		$(".comment-section-renderer-paginator .load-more-text").setAttribute("class", $(".comment-section-renderer-paginator .load-more-text").getAttribute("class") + " hid");
+	}
+	function lmLoadMoreOff()
+	{
+		$(".comment-section-renderer-paginator").removeAttribute("disabled");
+		$(".comment-section-renderer-paginator .load-more-text").setAttribute("class", $(".comment-section-renderer-paginator .load-more-text").getAttribute("class").replace("hid", ""));
+		$(".comment-section-renderer-paginator .load-more-loading").setAttribute("class", $(".comment-section-renderer-paginator .load-more-loading").getAttribute("class") + " hid");
+	}
+	
+	$(".comment-section-renderer-paginator").onclick = function()
+	{
+		lmLoadMoreOn();
+		
+		loadMoreComments();
+		
+	}
+	
+}
+
+function postloadEvents()
+{
+	
+	if ($(".comment-section-renderer-paginator"))
+	{
+		loadMoreButtonFunctionality();
+	}
+	
+}
+
+function resetLoading(comments)
+{
+	
+	$(".comment-section-renderer-paginator").outerHTML = ""; // clean up our garbage
+	
+	if (typeof comments.response.continuationContents.itemSectionContinuation.continuations !== 'undefined')
+	{
+		nextcontinuation = comments.response.continuationContents.itemSectionContinuation.continuations[0].nextContinuationData.continuation;
+		nextitct = comments.response.continuationContents.itemSectionContinuation.continuations[0].nextContinuationData.clickTrackingParams;
+		nextxsrf = comments.xsrf_token;
+		
+		$("#comment-section-renderer-items").insertAdjacentHTML("afterend", getCommentTemplate("cMainLoadMore"));
+		postloadEvents();
+	}
+	else
+	{
+		return false;
+	}
 	
 }
 
@@ -388,16 +810,62 @@ function loadComments(retry)
 	var commentsp;
 	var commentsg = getComments().then(response => commentsp = response);
 	
+	
 	// Loop while waiting for comments to be gotten
 	
-	setInterval(function()
+	var loopload = setInterval(function()
 	{
-		if (typeof commentsp.content_html !== 'undefined')
+		/* if (typeof commentsp.content_html !== 'undefined')
 		{
 		
 			var commentContainer = getCommentTemplate("cMainHead", commentsp.content_html);
 			
 			$("#watch-discussion .action-panel-loading").outerHTML = commentContainer;
+		
+		}	*/
+		
+		if (typeof commentsp.xsrf_token !== 'undefined')
+		{
+		
+			var commentContainer = initBuildComments(commentsp);
+			clearInterval(loopload);
+			
+			$("#watch-discussion .action-panel-loading").outerHTML = commentContainer;
+			postloadEvents();
+		
+		}	
+	}, 100)
+	
+}
+
+function loadMoreComments()
+{
+	
+	var commentsp;
+	var commentsg = getMoreComments(nextcontinuation, nextitct, nextxsrf).then(response => commentsp = response);
+	
+	
+	// Loop while waiting for comments to be gotten
+	
+	var loopload = setInterval(function()
+	{
+		/* if (typeof commentsp.content_html !== 'undefined')
+		{
+		
+			var commentContainer = getCommentTemplate("cMainHead", commentsp.content_html);
+			
+			$("#watch-discussion .action-panel-loading").outerHTML = commentContainer;
+		
+		}	*/
+		
+		if (typeof commentsp.xsrf_token !== 'undefined')
+		{
+		
+			var commentContainer = buildCommentTree(commentsp);
+			clearInterval(loopload);
+			
+			$("#comment-section-renderer-items").insertAdjacentHTML("beforeend", commentContainer);
+			resetLoading(commentsp);
 		
 		}	
 	}, 100)
@@ -442,7 +910,7 @@ function mainloader()
 			
 			$("#action-panel-details").insertAdjacentHTML("afterend", getCommentTemplate("cMainLoading"));
 			
-			setTimeout(loadComments(0), 1000);
+			setTimeout(loadComments(), 1000);
 			
 		}, 5, 15000);
 		
@@ -1676,6 +2144,136 @@ body :-webkit-full-screen-ancestor>:not(:-webkit-full-screen-ancestor):not(:-web
 
 ytd-comments {
     display: none !important;
+}
+
+.yt-uix-creator-heart-button {
+    padding: 0 7px 6px 0;
+}
+
+.creator-heart-big-unhearted:hover, .creator-heart-small-hearted:hover, .yt-uix-creator-heart-button, .yt-uix-creator-heart-button:hover {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.yt-uix-creator-heart-button {
+    padding: 0 7px 6px 0;
+}
+
+.creator-heart {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 2px;
+}
+
+.creator-heart-background-hearted {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    position: relative;
+}
+
+.creator-heart-big-hearted {
+    display: none;
+}
+
+.creator-heart-small-hearted {
+    position: absolute;
+    right: -7px;
+    bottom: -4px;
+}
+
+.creator-heart-small-container {
+    position: relative;
+    width: 13px;
+    height: 13px;
+}
+
+.creator-heart-small-left {
+    position: absolute;
+    right: 0;
+    bottom: 1px;
+    width: 6px;
+    height: 10px;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.creator-heart-small-right {
+    position: absolute;
+    right: 6px;
+    bottom: 1px;
+    width: 6px;
+    height: 10px;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+.comment-section-renderer-paginator {
+    margin: 15px 25px !important;
+    border: 1px solid #d3d3d3 !important;
+    padding: 10px 0 !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    background-color: #f8f8f8 !important;
+    color: #333 !important;
+    font-size: 12px !important;
+    outline: 0 !important;
+    height: 100% !important;
+    width: 95% !important;
+    background-image: -moz-linear-gradient(bottom,#fcfcfc 0,#f8f8f8 100%) !important;
+    background-image: -ms-linear-gradient(bottom,#fcfcfc 0,#f8f8f8 100%) !important;
+    background-image: -o-linear-gradient(bottom,#fcfcfc 0,#f8f8f8 100%) !important;
+    background-image: -webkit-linear-gradient(bottom,#fcfcfc 0,#f8f8f8 100%) !important;
+    background-image: linear-gradient(to top,#fcfcfc 0,#f8f8f8 100%) !important;
+}
+.comment-section-renderer-paginator:hover {
+    background-color: #f0f0f0 !important;
+    border-color: #c6c6c6 !important;
+    text-decoration: none !important;
+    background-image: -moz-linear-gradient(bottom,#f0f0f0 0,#f8f8f8 100%) !important;
+    background-image: -ms-linear-gradient(bottom,#f0f0f0 0,#f8f8f8 100%) !important;
+    background-image: -o-linear-gradient(bottom,#f0f0f0 0,#f8f8f8 100%) !important;
+    background-image: -webkit-linear-gradient(bottom,#f0f0f0 0,#f8f8f8 100%) !important;
+    background-image: linear-gradient(to top,#f0f0f0 0,#f8f8f8 100%) !important;
+}
+.yt-uix-button-default:active, .yt-uix-button-default.yt-uix-button-toggled, .yt-uix-button-default.yt-uix-button-active, .yt-uix-button-default.yt-uix-button-active:focus, .yt-uix-button-text:active {
+    border-color: #c6c6c6 !important;
+    background: #e9e9e9 !important;
+    box-shadow: inset 0 1px 0 #ddd !important;
+}
+.yt-uix-button-default, .yt-uix-button-default[disabled], .yt-uix-button-default[disabled]:hover, .yt-uix-button-default[disabled]:active, .yt-uix-button-default[disabled]:focus {
+    border-color: #d3d3d3;
+    background: #f8f8f8;
+    color: #333;
+}
+.yt-uix-button[disabled], .yt-uix-button[disabled]:hover, .yt-uix-button[disabled]:active, .yt-uix-button[disabled]:focus {
+    opacity: .5 !important;
+    filter: alpha(opacity=50) !important;
+    cursor: auto !important;
+    box-shadow: none !important;
 }`);
 	
 }
