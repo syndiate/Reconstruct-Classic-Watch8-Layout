@@ -1,7 +1,7 @@
-// ==UserScript==
-// @name        Reconstruct Classic Watch7 YouTube Layout Fixed
-// @version 1.0.0
-// @description  A revised and (almost) fixed version of the "simple script that seeks to reconstruct the classic watch7 layout on YouTube."
+// ==UserScript==
+// @name        Reconstruct Classic Watch8 YouTube Layout Fixed
+// @version 1.0.2
+// @description  A revised and (almost) fixed version of the "simple script that seeks to reconstruct the classic watch7 layout on YouTube." (though it's actually watch8)
 // @author syndiate
 // @require https://unpkg.com/vue@2.6.12/dist/vue.js
 // @require https://unpkg.com/xfetch-js@0.5.0/dist/xfetch.min.js
@@ -323,7 +323,7 @@ function injectInfo() {
         document.getElementById("watch-header").innerHTML = document.getElementById("watch-header").innerHTML.replace("viewcountplaceholder", document.getElementsByClassName("view-count style-scope ytd-video-view-count-renderer")[0].innerHTML); // viewcount
         document.getElementById("watch-header").innerHTML = document.getElementById("watch-header").innerHTML.replace("videotitleplaceholder", document.getElementsByClassName('title style-scope ytd-video-primary-info-renderer')[0].innerText  ); // video name
         document.getElementById("eow-title").innerHTML = document.getElementById("eow-title").innerHTML.replace("videotitleplaceholder", document.getElementsByClassName('title style-scope ytd-video-primary-info-renderer')[0].innerText); //title fix
-//        document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML); //publication date
+//        document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML); //publication date
         if (window.location.href.search("youtube.com/watch?") != "-1") {
         document.getElementById("channel-name-stuff").innerHTML = document.getElementById("channel-name-stuff").innerHTML.replace("channelnameplaceholder", document.getElementsByClassName("style-scope ytd-video-owner-renderer")[2].children[0].children[0].children[0].children[0].children[0].innerHTML); //channel name
         }
@@ -347,61 +347,61 @@ function injectInfo() {
         var uploadType;
         // description box
 
-        if (document.getElementById("date").children[1].innerHTML.search("Premiered ") != "-1") {
-            if (document.getElementById("date").children[1].innerHTML.search(" hours ago") != "-1") {
+        if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("Premiered ") != "-1") {
+            if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search(" hours ago") != "-1") {
                 uploadType = "7";
-            } else if (document.getElementById("date").children[1].innerHTML.search(" minutes ago") != "-1") {
+            } else if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search(" minutes ago") != "-1") {
                 uploadType = "7";
             } else {
             uploadType = "2";
             }
-        } else if (document.getElementById("date").children[1].innerHTML.search("Started streaming") != "-1") {
-            if (document.getElementById("date").children[1].innerHTML.search("minutes ago") != "-1") {
+        } else if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("Started streaming") != "-1") {
+            if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("minutes ago") != "-1") {
             uploadType = "6";
-            } else if (document.getElementById("date").children[1].innerHTML.search("hours ago") != "-1") {
+            } else if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("hours ago") != "-1") {
             uploadType = "6";
             } else {
                 uploadType = "3";
             }
-        } else if (document.getElementById("date").children[1].innerHTML.search("Streamed live on") != "-1") {
+        } else if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("Streamed live on") != "-1") {
             uploadType = "4";
         } else if (document.getElementById("info-contents").children[0].children[0].children[4].children[0] != undefined) {
             uploadType = "5";
-        } else if (document.getElementById("date").children[1].innerHTML.search("Scheduled for") != "-1") {
+        } else if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("Scheduled for") != "-1") {
             uploadType = "8";
         } else {
             uploadType = "0";
         }
         if (uploadType == "2") {
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Premiered on "); // upload type
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML.replace("Premiered ", ""));
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.replace("Premiered ", ""));
         }
         if (uploadType == "0") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Published on "); // upload type
         }
         if (uploadType == "3") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML.replace("Started streaming ", "")); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.replace("Started streaming ", "")); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Started streaming on "); // upload type
     }
         if (uploadType == "4") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML.replace("Streamed live on ", "")); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.replace("Streamed live on ", "")); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Streamed live on "); // upload type
         }
         if (uploadType == "5") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Uploaded on "); // upload type
         }
         if (uploadType == "6") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML.replace("Started streaming ", "")); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.replace("Started streaming ", "")); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Started streaming "); // upload type
         }
         if (uploadType == "7") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML.replace("Premiered ", "")); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.replace("Premiered ", "")); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Premiered "); // upload type
         }
         if (uploadType == "8") {
-            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML.replace("Scheduled for ", "")); // upload date
+            document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.replace("Scheduled for ", "")); // upload date
             document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploadtype", "Scheduled for "); // upload type
         }
 
@@ -552,7 +552,7 @@ if (document.getElementById("subscriber-watch-count").innerHTML == "<!--css-buil
      }, 5);
 
     function getLikeButtonCountAfterButtonClick() {
-        if (document.getElementById("date").children[1].innerHTML.search("Started streaming") == "-1") {
+        if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("Started streaming") == "-1") {
         document.getElementById("like-count").innerHTML = document.getElementById("menu-container").children[0].children[0].children[0].children[0].children[0].children[1].ariaLabel.replace(" likes", "");
         document.getElementById("like-count").innerHTML = document.getElementById("like-count").innerHTML.replace("1 like", "1");
         } else {
@@ -561,7 +561,7 @@ if (document.getElementById("subscriber-watch-count").innerHTML == "<!--css-buil
     }
 
     function getDislikeButtonCountAfterButtonClick() {
-        if (document.getElementById("date").children[1].innerHTML.search("Started streaming") == "-1") {
+        if (document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML.search("Started streaming") == "-1") {
         document.getElementById("dislike-count").innerHTML = document.getElementById("menu-container").children[0].children[0].children[0].children[1].children[0].children[1].ariaLabel.replace(" dislikes", "");
         document.getElementById("dislike-count").innerHTML = document.getElementById("dislike-count").innerHTML.replace("1 dislike", "1");
         } else {
@@ -3710,7 +3710,7 @@ Loading more suggestions...
 
         //document.getElementById("watch-header").innerHTML = document.getElementById("watch-header").innerHTML.replace("videotitleplaceholder", document.getElementsByClassName('title style-scope ytd-video-primary-info-renderer')[0].innerText); // video name
         //document.getElementById("eow-title").innerHTML = document.getElementById("eow-title").innerHTML.replace("videotitleplaceholder", document.getElementsByClassName('title style-scope ytd-video-primary-info-renderer')[0].innerText); //title fix
-//        //document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.getElementById("date").children[1].innerHTML); //publication date
+//        //document.getElementById("action-panel-details").innerHTML = document.getElementById("action-panel-details").innerHTML.replace("uploaddateplaceholder", document.querySelector('#info-text #info-strings yt-formatted-string').innerHTML); //publication date
         //if (window.location.href.search("youtube.com/watch?") != "-1") {
         //document.getElementById("channel-name-stuff").innerHTML = document.getElementById("channel-name-stuff").innerHTML.replace("channelnameplaceholder", document.getElementsByClassName("style-scope ytd-video-owner-renderer")[2].children[0].children[0].children[0].children[0].children[0].innerHTML); //channel name
         //}
