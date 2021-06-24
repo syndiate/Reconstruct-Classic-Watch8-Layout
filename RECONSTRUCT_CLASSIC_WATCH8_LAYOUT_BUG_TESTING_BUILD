@@ -128,6 +128,56 @@ if (ytLang == "en")
 			subscribed: "Subscribed",
 			showmore: "Show more",
 			showless: "Show less",
+            report: "Report",
+            statistics: "Statistics",
+            transcript: "Transcript",
+            translations: "Add translations",
+            views: "views",
+            upnext: "Up next",
+            autoplay: "Autoplay",
+            license: "License",
+            category: "Category",
+            signin: "Sign in",
+            opinioncount: "Sign in to make your opinion count.",
+            clickcardlike: "Like this video?",
+            clickcarddislike: "Don't like this video?",
+            watchagainlater: "Want to watch this again later?",
+            clickcardaddto: "Sign in to add this video to a playlist.",
+            reportvideo: "Need to report the video?",
+            clickcardreport: "Sign in to report inappropriate content.",
+            loading: "Loading...",
+            autoplayhover: "When autoplay is enabled, a suggested video will automatically play next.",
+            featurenotavailable: "This feature is not available right now. Please try again later.",
+            rentalrequired: "Rating is available when the video has been rented.",
+            verified: "Verified",
+            sharesharebox: "Share",
+            shareembed: "Embed",
+            shareemail: "Email",
+            startat: "Start at",
+            interactivetranscript: "The interactive transcript could not be loaded.",
+            facebookshare: 'Share to Facebook. Opens in a new window.',
+            twittershare: 'Share to Twitter. Opens in a new window.',
+            googleshare: 'Share to Google+. Opens in a new window.',
+            bloggershare: 'Share to Blogger. Opens in a new window.',
+            redditshare: 'Share to reddit. Opens in a new window.',
+            tumblrshare: 'Share to Tumblr. Opens in a new window.',
+            pinterestshare: 'Share to Pinterest. Opens in a new window.',
+            russianplatform: 'Share to ВКонтакте. Opens in a new window.',
+            linkedinshare: 'Share to LinkedIn. Opens in a new window.',
+            stumbleuponshare: 'Share to StumbleUpon. Opens in a new window.',
+            otherrussianplatform: 'Share to Одноклассники. Opens in a new window.',
+            livejournalshare: 'Share to LiveJournal. Opens in a new window.',
+            diggshare: 'Share to Digg. Opens in a new window.',
+            embedpreview: "Preview:",
+            embedvideosize: "Video size:",
+            embedsuggested: "Show suggested videos when the video finishes",
+            embedplayercontrols: "Show player controls",
+            embedvideotitle: "Show video title and player actions",
+            embednocookie: "Enable privacy-enhanced mode",
+            embedmsg: "By displaying YouTube videos on your site, you are agreeing to the",
+            embedmsghref: "YouTube API terms of service",
+            embedcustomsize: "Custom size",
+            registernow: "Register now",
 			isolateViewCount: new RegExp(" views", "g"),
 			dateTypeUploadedBefore: new RegExp("Uploaded on ", "g"),
 			dateTypeUploaded: "Uploaded on __date__",
@@ -156,7 +206,57 @@ if (ytLang == "ja")
 			subscribed: "登録済み",
 			showmore: "もっと見る",
 			showless: "一部を表示",
-			isolateViewCount: new RegExp("(視聴回数 )|( 回)", "g")
+			isolateViewCount: new RegExp("(視聴回数 )|( 回)", "g"),
+            report: "報告書",
+            statistics: "統計",
+            transcript: "トランスクリプト",
+            translations: "翻訳を追加する",
+            views: "ビュー",
+            upnext: "次に",
+            autoplay: "自動再生",
+            license: "ライセンス",
+            category: "カテゴリー ",
+            signin: "サインイン",
+            opinioncount: "あなたの意見を重要視するためにサインインしてください。",
+            clickcardlike: "このビデオが好きですか？",
+            clickcarddislike: "このビデオが気に入らない？",
+            watchagainlater: "後でもう一度見たいですか？",
+            clickcardaddto: "サインインして、このビデオを再生リストに追加します。",
+            reportvideo: "ビデオを報告する必要がありますか？",
+            clickcardreport: "サインインして不適切なコンテンツを報告します。",
+            loading: "読み込んでいます...",
+            autoplayhover: "自動再生が有効になっている場合、提案されたビデオが次に自動的に再生されます。",
+            featurenotavailable: "この機能は現在ご利用いただけません。 後でもう一度やり直してください。",
+            rentalrequired: "レーティングは、ビデオがレンタルされたときに利用できます。",
+            verified: "確認済み",
+            sharesharebox: "シェア",
+            shareembed: "埋め込む",
+            shareemail: "Eメール",
+            startat: "で開始",
+            interactivetranscript: "インタラクティブトランスクリプトを読み込めませんでした。",
+            facebookshare: 'Facebookに共有します。 新しいウィンドウで開きます。',
+            twittershare: 'Twitterで共有します。 新しいウィンドウで開きます。',
+            googleshare: 'Google+に共有します。 新しいウィンドウで開きます。',
+            bloggershare: 'Bloggerに共有します。 新しいウィンドウで開きます。',
+            redditshare: 'redditに共有します。 新しいウィンドウで開きます。',
+            tumblrshare: 'Tumblrに共有します。 新しいウィンドウで開きます。',
+            pinterestshare: 'Pinterestに共有します。 新しいウィンドウで開きます。',
+            russianplatform: 'ВКонтактеに共有します。 新しいウィンドウで開きます。',
+            linkedinshare: 'LinkedInに共有します。 新しいウィンドウで開きます。',
+            stumbleuponshare: 'StumbleUponに共有します。 新しいウィンドウで開きます。',
+            otherrussianplatform: 'Одноклассникиに共有します。 新しいウィンドウで開きます。',
+            livejournalshare: 'LiveJournalに共有します。 新しいウィンドウで開きます。',
+            diggshare: 'Diggにシェアする。 新しいウィンドウで開きます。',
+            embedpreview: "プレビュー：",
+            embedvideosize: "ビデオサイズ：",
+            embedsuggested: "動画が終了したら、おすすめの動画を表示する",
+            embedplayercontrols: "プレーヤーのコントロールを表示する",
+            embedvideotitle: "動画のタイトルとプレーヤーのアクションを表示する",
+            embednocookie: "プライバシー強化モードを有効にする",
+            embedmsg: "あなたのサイトにYouTubeビデオを表示することにより、あなたは",
+            embedmsghref: "YouTubeAPI利用規約",
+            embedcustomsize: "カスタムサイズ",
+            registernow: "今すぐ登録"
 		};
 }
 if (ytLang == "de")
@@ -169,7 +269,57 @@ if (ytLang == "de")
 			unsubscribe: "Abo beenden",
 			subscribed: "Abonniert",
 			showmore: "Mehr anzeigen",
-			showless: "Weniger anzeigen"
+			showless: "Weniger anzeigen",
+            report: "Melden",
+            statistics: "Statistik",
+            transcript: "Transkript",
+            translations: "Übersetzungen hinzufügen",
+            views: "Aufrufe",
+            upnext: "Nächstes Video",
+            autoplay: "Autoplay",
+            license: "Lizenz",
+            category: "Kategorie",
+            signin: "Anmelden",
+            opinioncount: "Melde dich bei YouTube an, damit dein Feedback gezählt wird.",
+            clickcardlike: "Dieses Video gefällt dir?",
+            clickcarddislike: "Dieses Video gefällt dir nicht?",
+            watchagainlater: "Möchtest du dieses Video später noch einmal ansehen?",
+            clickcardaddto: "Wenn du bei YouTube angemeldet bist, kannst du dieses Video zu einer Playlist hinzufügen.",
+            reportvideo: "Möchtest du dieses Video melden?",
+            clickcardreport: "Melde dich an, um unangemessene Inhalte zu melden",
+            loading: "Wird geladen...",
+            autoplayhover: "Wenn Autoplay aktiviert ist, wird die Wiedergabe automatisch mit einem der aktuellen Videovorschläge fortgesetzt.",
+            featurenotavailable: "Diese Funktion ist zurzeit nicht verfügbar. Bitte versuche es später erneut.",
+            rentalrequired: "Die Bewertungsfunktion ist nach Ausleihen des Videos verfügbar.",
+            verified: "Verifiziert",
+            sharesharebox: "Teilen",
+            shareembed: "Einbetten",
+            shareemail: "E-Mail",
+            startat: "Start um",
+            interactivetranscript: "Das interaktive Transkript konnte nicht geladen werden.",
+            facebookshare: 'Hier klicken, um das Video auf Facebook zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            twittershare: 'Hier klicken, um das Video auf Twitter zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            googleshare: 'Hier klicken, um das Video auf Google+ zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            bloggershare: 'Hier klicken, um das Video auf reddit zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            redditshare: 'Hier klicken, um das Video auf Blogger zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            tumblrshare: 'Hier klicken, um das Video auf Tumblr zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            pinterestshare: 'Hier klicken, um das Video auf Pinterest zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            russianplatform: 'Hier klicken, um das Video auf ВКонтакте zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            linkedinshare: 'Hier klicken, um das Video auf LinkedIn zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            stumbleuponshare: 'Hier klicken, um das Video auf Одноклассники zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            otherrussianplatform: 'Hier klicken, um das Video auf StumbleUpon zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            livejournalshare: 'Hier klicken, um das Video auf LiveJournal zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            diggshare: 'Hier klicken, um das Video auf Digg zu teilen. Dadurch wird ein neues Fenster geöffnet.',
+            embedpreview: "Vorschau:",
+            embedvideosize: "Videogröße:",
+            embedsuggested: "Nach Ende des Videos vorgeschlagene Videos anzeigen",
+            embedplayercontrols: "Player-Steuerelemente anzeigen",
+            embedvideotitle: "Videotitel und Player-Aktionen anzeigen",
+            embednocookie: "Erweiterten Datenschutzmodus aktivieren",
+            embedmsg: "Durch die Wiedergabe von YouTube-Videos auf deiner Website stimmst du den",
+            embedmsghref: "YouTube API-Nutzungsbedingungen",
+            embedcustomsize: "Benutzerdefinierte Größe",
+            registernow: "Jetzt anmelden"
 		};
 }
 if (ytLang == "es")
@@ -646,10 +796,10 @@ europemariehamn: "+180"
 
 
 
+function reconstructWatchLayout() {
 
 
-
-
+try {
 
 
 
@@ -705,7 +855,7 @@ var checkForPlaylist = setInterval(() => {
 
     if (document.getElementById('playlist') && window.location.pathname.toLowerCase() == "/watch") {
         clearInterval(checkForPlaylist);
-        injPlaylist();
+        //injPlaylist();
     }
 
 }, 10);
@@ -717,6 +867,12 @@ async function getWatchPage(data = {})
 
 	videoId = (function()
 	{
+
+        if (window.location.search.startsWith("?search_query")) {
+
+            return (`Not a video page.`);
+
+        } else {
 
         if (window.location.search.split(/\?|\&|\=/g)[3] != "list")
         {
@@ -731,9 +887,11 @@ async function getWatchPage(data = {})
 
         }
 
+        }
+
 	})();
 
-    if (document.location.pathname.toLowerCase() == "/watch")
+    if (document.location.pathname.toLowerCase() == "/watch" && videoId != "Not a video page")
     {
 
 	// Request the current video page again and retrieve required data for loading comments.
@@ -2543,41 +2701,36 @@ xhttp.onreadystatechange = function () {
 		{
 
 		var description = data[1].response.contents.twoColumnWatchNextResults.results.results.contents[0].itemSectionRenderer.contents[0].videoMetadataRenderer.description.runs;
-            if (typeof data[1].response.contents.twoColumnWatchNextResults.results.results.contents[0].itemSectionRenderer.contents[0].videoMetadataRenderer.description.runs != 'undefined') {
-			var initialdescription = (``);
                         var finisheddescription = (``);
-			for (i = 0; i < description.length; i++) {
+            if (typeof data[1].response.contents.twoColumnWatchNextResults.results.results.contents[0].itemSectionRenderer.contents[0].videoMetadataRenderer.description.runs != 'undefined') {
+
+			for (var i = 0; i < description.length; i++) {
 				if (typeof description[i].navigationEndpoint != 'undefined') {
                     if (typeof description[i].navigationEndpoint.urlEndpoint != 'undefined') {
 				var descriptionintheworks = '<a class="g-hovercard yt-uix-sessionlink      spf-link " href="' + description[i].navigationEndpoint.urlEndpoint.url + '">' + description[i].text + "</a><br>";
-				var almostdescription = initialdescription += descriptionintheworks;
-				finisheddescription += almostdescription;
+				finisheddescription += descriptionintheworks;
                     } else if (typeof description[i].navigationEndpoint.watchEndpoint != 'undefined') {
                         if (typeof description[i].navigationEndpoint.watchEndpoint.playlistId != 'undefined') {
                                                 var url = "https://www.youtube.com/watch?v=" + description[i].navigationEndpoint.watchEndpoint.videoId + "&list=" + description[i].navigationEndpoint.watchEndpoint.playlistId;
                         				var descriptionintheworks = '<a class="g-hovercard yt-uix-sessionlink      spf-link " href="' + url + '">' + description[i].text + "</a><br>";
-				var almostdescription = initialdescription += descriptionintheworks;
-				finisheddescription += almostdescription;
+				finisheddescription += descriptionintheworks;
                         }
                         else
                         {
                                                 var url = "https://www.youtube.com/watch?v=" + description[i].navigationEndpoint.watchEndpoint.videoId;
                         				var descriptionintheworks = '<a class="g-hovercard yt-uix-sessionlink      spf-link " href="' + url + '">' + description[i].text + "</a><br>";
-				var almostdescription = initialdescription += descriptionintheworks;
-				finisheddescription += almostdescription;
+				finisheddescription += descriptionintheworks;
                         }
                     } else if (typeof description[i].navigationEndpoint.browseEndpoint != 'undefined') {
                         if (typeof description[i].navigationEndpoint.canonicalBaseUrl == 'undefined') {
                         var hashtagtext = description[i].text;
                         var hashtagurl = "https://www.youtube.com/hashtag/" + (hashtagtext.split("#")[1]);
                         var descriptionintheworks = '<a class="g-hovercard yt-uix-sessionlink      spf-link " href="' + hashtagurl + '">' + hashtagtext + "</a><br>";
-				        var almostdescription = initialdescription += descriptionintheworks;
-				        finisheddescription += almostdescription;
+				        finisheddescription += descriptionintheworks;
                     } else if (typeof description[i].navigationEndpoint.canonicalBaseUrl != 'undefined') {
                         var baseurl = "https://www.youtube.com" + description[i].navigationEndpoint.canonicalBaseUrl;
                        var descriptionintheworks = '<a class="g-hovercard yt-uix-sessionlink      spf-link " href="' + baseurl + '">' + description[i].text + "</a><br>";
-				        var almostdescription = initialdescription += descriptionintheworks;
-				        finisheddescription += almostdescription;
+				        finisheddescription += descriptionintheworks;
                     }
 				}
             }
@@ -2585,7 +2738,7 @@ xhttp.onreadystatechange = function () {
                 {
 					var descriptionwithouthref = description[i].text;
 
-                    finisheddescription += almostdescription += "<br>";
+                    finisheddescription += descriptionwithouthref;
 				}
             }
 
@@ -2593,7 +2746,7 @@ xhttp.onreadystatechange = function () {
 
 		}
             else {
-                return "";
+                return (``);
             }
         }
 		catch(err)
@@ -3718,7 +3871,6 @@ Loading more suggestions...
             }
 
             */
-            do {
 
             switch(data) {
                 default:
@@ -3729,9 +3881,10 @@ Loading more suggestions...
 
                 document.getElementById("related").outerHTML = document.getElementById("related").outerHTML + generateRelatedTemplate(datatwo);
                     break;
+                case "Blocked request":
+                    break;
 
             }
-        } while (data == undefined);
     }
 
     }
@@ -3805,6 +3958,7 @@ async function injPlaylist()
 
 function injectVideoInformation()
 {
+    //try {
 	console.log("Called injectVideoInformation()");
 
 	var data;
@@ -3818,12 +3972,13 @@ function injectVideoInformation()
 
 
 
+
 	var loop = setInterval(function()
 	{
 
 		console.log("Checking watch data...");
 
-		if (typeof data[0].page !== 'undefined' && window.location.pathname == "/watch")
+		if (typeof data[0].page !== 'undefined')
 		{
 
 
@@ -3854,20 +4009,31 @@ function injectVideoInformation()
 	{
 		console.log("Called injVidInfo2()");
 
-        if (window.location.pathname == "/watch") {
 
-		document.getElementById("clarify-box").outerHTML = document.getElementById("clarify-box").outerHTML + generateVideoTemplate(data, ytinitial);
-		injectRewrite();
+            do {
 
-
-            //
+            var datatwo = getWatchPage().then(response => data = response);
 
 
+            } while (data == undefined);
 
 
-        }
+                        document.getElementById("clarify-box").outerHTML = document.getElementById("clarify-box").outerHTML + generateVideoTemplate(data);
+
+        injectRewrite(data);
+
+
+
 	}
 
+
+   //}
+    //catch(err)
+    //{
+
+        var variable = 69;
+
+    //}
 
 }
 
@@ -3891,16 +4057,44 @@ function injectVideoInformation()
 
 
 
-function injectRewrite() {
+function injectRewrite(watchdata) {
 
-    if (document.getElementById("masthead-container").querySelector("img.yt-img-shadow")) {
+    if (watchdata[1].response.responseContext.serviceTrackingParams[1].params[0].value == "1") {
 
         var loggedin = "1";
 
     } else {
+
         var loggedin = "0";
 
     }
+
+
+    var videoId = (function()
+	{
+
+        if (window.location.search.startsWith("?search_query")) {
+
+            return (`Not a video page.`);
+
+        } else {
+
+        if (window.location.search.split(/\?|\&|\=/g)[3] != "list")
+        {
+
+		return window.location.search.split(/\?|\&|\=/g)[2];
+
+        }
+        else
+        {
+
+            return window.location.search.split(/\?|\&|\=/g)[2] + "&list=" + window.location.search.split(/\?|\&|\=/g)[4];
+
+        }
+
+        }
+
+	})();
 
 
 
@@ -3974,11 +4168,13 @@ function injectRewrite() {
 
 
 
-
+if (loggedin == "0") {
 
     var clickcard = setInterval(injectClickcardListener, 10);
 
     var updateclickcard = setInterval(updateClickcards, 10);
+
+}
 
 
 
@@ -4919,6 +5115,8 @@ Loading...
 
             document.getElementsByClassName("share-panel-email")[0].onclick = function() {
 
+                if (loggedin == "1") {
+
                 let loadingActionPanel = `<div id="action-panel-report" class="action-panel-content" data-auth-required="true">
     <div class="action-panel-loading">
         <p class="yt-spinner ">
@@ -4937,6 +5135,7 @@ Loading...
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 404) {
        // Typical action to be performed when the document is ready:
+
        let actionPanelError = `  <div id="action-panel-error" class="action-panel-content">
     <div class="action-panel-error">
       This feature is not available right now. Please try again later.
@@ -4959,6 +5158,63 @@ xhttp.onreadystatechange = function() {
             xhttp.open("GET", request, true);
             xhttp.send();
             }
+
+                else {
+
+                document.getElementById("watch-action-panels").remove();
+
+                let registernowmsg = (`<div id="watch-action-panels" class="watch-action-panels yt-uix-button-panel yt-card yt-card-has-padding">
+      <div id="action-panel-share" class="action-panel-content" data-panel-loaded="true">
+
+  <div id="watch-actions-share-panel">
+
+
+  <div class="share-panel">
+        <div class="yt-uix-tabs">
+    <span class="yt-uix-button-group" data-button-toggle-group="share-panels">
+<button class="yt-uix-button yt-uix-button-size-default yt-uix-button-text share-panel-services yt-card-title" type="button" onclick=";return false;" data-button-toggle="true"><span class="yt-uix-button-content">Share</span></button><button class="yt-uix-button yt-uix-button-size-default yt-uix-button-text share-panel-embed yt-card-title" type="button" onclick=";return false;" data-button-toggle="true"><span class="yt-uix-button-content">Embed</span></button><button class="yt-uix-button yt-uix-button-size-default yt-uix-button-text share-panel-email yt-card-title yt-uix-button-toggled" type="button" onclick=";return false;" data-button-toggle="true" aria-pressed="true" id="kbd-nav-131516"><span class="yt-uix-button-content">Email</span></button>    </span>
+  </div>
+
+
+
+
+
+
+
+        <div class="share-panel-email-container" data-disabled="true">
+        <strong><a href="https://accounts.google.com/ServiceLogin?hl=de&amp;continue=http%3A%2F%2Fwww.youtube.com%2Fsignin%3Fapp%3Ddesktop%26action_handle_signin%3Dtrue%26hl%3Dde%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253D` + videoId + `%2526feature%253Dshare_email%26feature%3Demail&amp;passive=true&amp;service=youtube&amp;uilel=3">Register now</a>!
+</strong>
+
+  </div>
+
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup yt-uix-button-opacity yt-uix-close" type="button" onclick=";return false;" id="action-panel-dismiss" aria-label="Schließen" data-close-parent-id="watch8-action-panels"></button>
+  </div>`);
+
+
+                    document.getElementById("action-panel-details").insertAdjacentHTML('beforebegin', registernowmsg);
+
+                }
+
+            }
+
+
 
 
         } else if (document.getElementsByClassName("action-panel-trigger-share")[0].getAttribute("class").search("yt-uix-menu-trigger-selected yt-uix-button-toggled") != "-1") {
@@ -5011,11 +5267,13 @@ if (loggedin == "0") {
 
         document.body.insertAdjacentHTML('beforeend', reportclickcard);
 
-}
+} else {
 
 
                 document.getElementById("watch8-secondary-actions").children[2].children[0].click();
                 document.getElementById("watch8-secondary-actions").children[2].children[0].blur();
+
+}
             }
 
             document.getElementById("action-panel-overflow-menu").children[2].children[0].onclick = function() {
@@ -5025,13 +5283,6 @@ if (loggedin == "0") {
             }
 
             document.getElementById("action-panel-overflow-menu").children[1].children[0].onclick = function() {
-
-                	videoId = (function()
-	{
-
-		return window.location.search.split(/\?|\&|\=/g)[2];
-
-	})();
 
 
                 var ajaxrequest = "https://www.youtube.com/insight_ajax?action_get_statistics_and_data=1&v=" + videoId;
@@ -5350,9 +5601,15 @@ xhttp.onreadystatechange = function() {
 }
 
 
+} catch(err) {
 
+var variable = 69;
 
+}
 
+}
+
+reconstructWatchLayout();
 
 
 
@@ -5418,12 +5675,11 @@ function resetWatch() {
 
     //}
 
-    if (document.location.pathname.toLowerCase() == "/watch")
-    {
-              injectTemplate();
-        injRecommended();
+    //if (document.location.pathname.toLowerCase() == "/watch")
+    //{
+              reconstructWatchLayout();
 
-    }
+    //}
 
 }
 
@@ -5451,6 +5707,7 @@ function addStyle(styleString) {
   style.textContent = styleString;
   document.head.append(style);
 }
+
 
 addStyle(`.title.ytd-video-primary-info-renderer {
     font-size: 20px;
@@ -5488,6 +5745,13 @@ display:none !important;
 
 div#info.ytd-watch-flexy {
 display:none !important;
+}
+
+
+div.yt-ui-menu-content {
+left: 0px !important;
+top: 27px !important;
+
 }
 
 /*
