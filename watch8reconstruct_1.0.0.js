@@ -1,4 +1,5 @@
-// ==UserScript==
+
+// ==UserScript==
 // @name        Reconstruct Classic Watch8 YouTube Layout Fixed
 // @version 1.0.2
 // @description  A revised and (almost) fixed version of the "simple script that seeks to reconstruct the classic watch7 layout on YouTube." (though it's actually watch8)
@@ -586,11 +587,18 @@ if (document.getElementById("subscriber-watch-count").innerHTML == "<!--css-buil
         getLikeButtonStatus();
         getDislikeButtonCountAfterButtonClick();
     }
-    document.getElementsByClassName("addto-button")[0].onclick = function() {
         document.getElementsByClassName("addto-button")[0].blur();
-        document.getElementById("menu-container").children[0].children[0].children[0].children[3].click();
-        getLikeButtonStatus();
-    }
+        for (var k = 0; k < document.getElementById("menu-container").querySelector("div#top-level-buttons-computed.top-level-buttons").children.length; k++) {
+
+if (document.getElementById("menu-container").children[0].children[0].children[0].children[k].innerText == "Save") {
+
+document.getElementById("menu-container").children[0].children[0].children[0].children[k].click();
+
+break;
+
+}
+
+        }
     document.getElementsByClassName("action-panel-trigger-share")[0].onclick = function() {
         if (document.getElementsByClassName("action-panel-trigger-share")[0].getAttribute("class").search("yt-uix-menu-trigger-selected yt-uix-button-toggled") == "-1") {
         document.getElementsByClassName("action-panel-trigger-share")[0].blur();
