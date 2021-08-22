@@ -587,6 +587,8 @@ if (document.getElementById("subscriber-watch-count").innerHTML == "<!--css-buil
         getLikeButtonStatus();
         getDislikeButtonCountAfterButtonClick();
     }
+	
+	document.getElementsByClassName("addto-button")[0].onclick = function() {
         document.getElementsByClassName("addto-button")[0].blur();
         for (var k = 0; k < document.getElementById("menu-container").querySelector("div#top-level-buttons-computed.top-level-buttons").children.length; k++) {
 
@@ -599,6 +601,8 @@ break;
 }
 
         }
+		
+	}
     document.getElementsByClassName("action-panel-trigger-share")[0].onclick = function() {
         if (document.getElementsByClassName("action-panel-trigger-share")[0].getAttribute("class").search("yt-uix-menu-trigger-selected yt-uix-button-toggled") == "-1") {
         document.getElementsByClassName("action-panel-trigger-share")[0].blur();
